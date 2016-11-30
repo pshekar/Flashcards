@@ -1,0 +1,27 @@
+<md-toolbar class="toolbarClass md-whiteframe-z1" md-scroll-shrink>
+		<div class="md-toolbar-tools">
+			<md-button class="md-icon-button" aria-label="Menu" ng-click="toolBarVM.openLeftSideNav()" hide-gt-md>
+					<ng-md-icon icon="menu"></ng-md-icon>
+				</md-button>
+				{{toolBarVM.dir}}
+				<span flex></span>
+
+				<md-menu-bar>
+					<md-menu>
+						<md-button ng-click="$mdOpenMenu($event)">
+								{{toolBarVM.students.name}}
+						</md-button>
+						<md-menu-content width="3">
+							<md-menu-item>
+								<md-button ng-click="toolBarVM.userProfile()" class="btn btn-primary">Profile</md-button>
+							</md-menu-item>
+							<md-menu-divider></md-menu-divider>
+							<md-menu-item>
+								<md-button ng-click="toolBarVM.Logout()" class="btn btn-primary">Logout</md-button>
+							</md-menu-item>
+						</md-menu-content> 
+					</md-menu>
+				</md-menu-bar>		
+		</div>
+</md-toolbar>
+	<!-- This adds a custom directive of sidebar inside toolbar  -->

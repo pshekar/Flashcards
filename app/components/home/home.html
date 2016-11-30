@@ -1,0 +1,111 @@
+<!--   <md-content flex md-scroll-y layout-fill layout-padding>
+  	<div layout="row" layout-align="center center">
+  		 <md-card flex-gt-sm="90" flex-gt-md="80" layout-padding>
+  			<md-card-content>
+           		<h3> Courses </h3>
+              <span flex> </span>
+           		<md-list>
+           			<md-item>
+           				<md-item-content ng-repeat="course in homeVM.courses">
+                    <md-menu-item>
+                      <md-button ng-click="homeVM.goToGrades(course.courseName)">
+           					  	<div class="dashboard-courses">
+                        <h3>
+           					 		{{course.courseId}}: &nbsp {{course.courseName}}
+                        </h3>
+           					 	</div>
+                       </md-button>
+                      </md-menu-item>
+                    <md-divider  hide-sm ng-if="!$last"></md-divider>
+           				</md-item-content>
+           			
+           			</md-item>
+           		</md-list>
+     		</md-card-content>
+   		 </md-card>
+   	</div>
+  </md-content>
+-->
+<div class="md-whiteframe-z2 welcomeBox">
+  <div class="welcomeMessage"> Welcome Back, {{homeVM.students.name}}! </div>
+</div>
+
+<div class="specialBoxes">
+  <div class='cardPadding' layout="row" layout-wrap>
+   <md-card style="width: 350px; height:200px">
+    <md-card-header>
+      <md-card-header-text>
+        <span class="md-title"> Total Credit Hours </span>
+      </md-card-header-text>
+    </md-card-header>
+    <md-divider></md-divider>
+    <md-card-content layout="column">
+      <span class="cardTextLarge"> {{homeVM.totalCreditHours}}</span>
+      <span flex></span>
+    </md-card-content>
+  </md-card>
+  <div id="card">
+  <md-card style="width: 350px; height:200px" ng-if="!homeVM.flipped">
+    <md-card-header>
+      <md-card-header-text>
+        <span class="md-title"> Requires Attention </span>
+      </md-card-header-text>
+    </md-card-header>
+    <md-divider></md-divider>
+    <md-card-content layout="column">
+      <span class="cardTextLargeAlert"> {{homeVM.requireAttention}}</span>
+      <span flex></span>
+    </md-card-content>
+    <div class="md-actions" layout-align="end center" layout="row">
+      <md-button ng-click="homeVM.flipped = !homeVM.flipped" >Show more</md-button>
+    </div>
+  </md-card>
+
+  <md-card style="width: 350px; height:200px" ng-if="homeVM.flipped">
+    <md-card-header>
+      <md-card-header-text>
+        <span class="md-title"> Requires Attention </span>
+      </md-card-header-text>
+    </md-card-header>
+    <md-divider></md-divider>
+    <md-card-content layout="column">
+      <div ng-repeat="course in homeVM.attentionCourse">
+        <span style="color: #C62828;">  {{course.courseId}} </span>
+        <span style="color: #C62828;">  {{course.letterGrade}} </span>
+      </div>
+      <span flex></span>
+    </md-card-content>
+    <div class="md-actions" layout-align="end center" layout="row">
+      <md-button ng-click="homeVM.flipped = !homeVM.flipped" >Show less </md-button>
+    </div>
+  </md-card>
+  </div> 
+  <md-card style="width: 350px; height:200px">
+    <md-card-header>
+      <md-card-header-text>
+        <span class="md-title"> Number of Courses </span>
+      </md-card-header-text>
+    </md-card-header>
+    <md-divider></md-divider>
+    <md-card-content layout="column">
+      <span class="cardTextLargeAlt"> {{homeVM.courses.length}}</span>
+      <span flex></span>
+    </md-card-content>
+  </md-card>
+
+</div>
+</div>
+
+<div class='cardPadding specialBoxes' layout="row" layout-wrap>
+ <md-card style="width: 350px;" ng-repeat="course in homeVM.courses">
+  <md-card-content layout="column">
+    <h2>{{course.courseId}}</h2>
+    <p> {{course.courseName}}</p>
+    <span flex></span>
+  </md-card-content>
+  <span flex></span>
+  <div class="md-actions" layout-align="end center" layout="row">
+    <md-button ng-click="homeVM.goToGrades(course)" >View</md-button>
+  </div>
+</md-card>
+</div>
