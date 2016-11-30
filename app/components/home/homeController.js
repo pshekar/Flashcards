@@ -1,5 +1,5 @@
 (function(){
-	angular.module('GradeBook')
+	angular.module('Flashcards')
 		.controller('homeController', ['$mdDialog', 'studentService', 'UserService', '$cookies', '$state', '$rootScope',
             function ($mdDialog, studentService, UserService, $cookies, $state, $rootScope) {
 

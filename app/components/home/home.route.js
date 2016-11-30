@@ -1,5 +1,5 @@
 (function(){
-	angular.module('GradeBook')
+	angular.module('Flashcards')
 		.config(['$stateProvider','$urlRouterProvider', homeRouter]);
 
 		function homeRouter($stateProvider,$urlRouterProvider) {

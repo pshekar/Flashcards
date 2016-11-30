@@ -1,5 +1,5 @@
 (function(){
-	angular.module('GradeBook')
+	angular.module('Flashcards')
 		// .directive('toolBar', function() {
 		// 	return {
 		// 		restrict: 'E',

@@ -1,0 +1,316 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,300,100italic,100);
+
+body, html {
+  height: 100%;
+}
+
+md-content.md-default-theme {
+  background-color: #eee;
+}
+
+.section {
+
+    padding-left: 5em;
+}
+
+.center {
+	margin:auto;
+}
+
+.dashboard-courses {
+
+}
+
+md-card {
+	margin-top: 7em;
+}
+.calculate-button{
+    top: auto;
+    right: auto;
+    bottom: 20px;
+    left: 20px;
+    position: absolute;
+}
+
+.dialog-size{
+	width: 50em;
+}
+
+.md-button.md-fab {
+	line-height: 68px;
+}
+
+.activeTab {
+	color: rgb(255,255,255);
+    background-color: rgb(255,87,34);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+}
+
+.gradeClass {
+    min-height: 30em;
+
+}
+div.ng-binding.ng-scope.layout-row {
+    padding:1em;
+}
+.md-button.md-fab.md-fab-bottom-right {
+    top: auto;
+    right: 20px;
+    bottom: 20px;
+    left: auto;
+    position: fixed !important;
+}
+
+.invisible {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+    transition: transform 0.3s linear;
+}
+
+/*.md-fab {
+    transform: scale(1);
+    transition: transform 0.3s linear;
+}*/
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.md-button.sideBarButton {
+    background-color: rgb(63,81,181);
+    color:white;
+}
+
+.md-button.sideBarButton:hover {
+    background-color: white !important;
+    color:black;
+
+}
+
+.md-button.sign-up {
+    background-color: #3eddea;
+}
+
+md-toolbar.toolbarClass { 
+    font-family: Roboto;
+    background-color: rgb(255,255,255) !important;
+    color: black;
+}
+md-sidenav.md-default-theme, md-sidenav, md-sidenav.md-default-theme md-content, md-sidenav md-content {
+    background-color: rgb(63,81,181);
+}
+md-divider.sideBarDivider {
+    display: block;
+    border-top-width: medium;
+    border-top-style: solid;
+    margin: 0;
+}
+
+ng-md-icon.sideBarIcon {
+  fill: currentColor;
+  vertical-align: middle;
+  display: inline-block;
+  line-height: 1;
+}
+
+md-card {
+     margin-top: 4em; 
+}
+
+md-card.gradePage {
+     margin-top: 1em; 
+}
+
+.cardPadding {
+    padding-left:100px;
+    padding-right:100px;
+    text-align:center;
+}
+
+.specialBoxes {
+    display:flex;
+    justify-content: center;
+    perspective: 800px
+}
+
+.welcomeBox {
+    height:200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../img/2.jpg');
+    background-size: 100%;
+    color: white;
+}
+
+.welcomeMessage {
+    font-size:40px;
+}
+
+.cardTextLarge {
+    color:#2196F3;
+    font-size:70px;
+}
+
+.cardTextLargeAlert {
+    color:#C62828;
+    font-size:70px;
+}
+
+.cardTextLargeAlt {
+    color:#4CAF50;
+    font-size:70px;
+}
+
+.sideBarClass {
+    background-image: url('../img/2.jpg');
+    background-size: 100%;
+    color: white;
+}
+
+.md-cyan-theme {
+    background-color: cyan;
+}
+
+.text-center {
+    text-align: center!important;
+}
+.login-frame md-card{
+    max-width:400px;
+}
+
+.login-frame img{
+    display: inline-block;
+    width:auto;
+    max-height: 100px;
+    height: initial;
+}
+.full-image-background {
+    background-size: cover;
+    background-position:center;
+}
+
+.login-register-img {
+    background-image: url(../img/background.png);
+    background-color: #3eddea;
+}
+
+.layout-column {
+    display: flex;
+}
+
+.flex {
+    -webkit-box-flex: 1;
+    flex: 1;
+}
+
+.layout-fill {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
+}
+
+.layout-row {
+    -webkit-box-orient: horizontal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+.animate-wrapper, .toolbar-button md-icon {
+    position: relative;
+}
+
+#ui-login {
+    overflow: auto;
+}
+.layout-column>.flex {
+    min-height: 0;
+}
+
+.flex, .flex-grow, .flex-initial {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    box-sizing: border-box;
+}
+.layout-align-center-center, .layout-align-end-center, .layout-align-space-around-center, .layout-align-space-between-center, .layout-align-start-center {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    max-width: 100%;
+}
+
+md-card.md-cyan-theme {
+    color: #3eddea;
+    background-color: rgb(255,255,255);
+    border-radius: 2px;
+}
+
+element.style {
+}
+<style>…</style>
+.md-button.md-cyan-theme.md-primary {
+    color: rgb(0,188,212);
+}
+.margin-bottom-10 {
+    margin-bottom: 10px!important;
+}
+.margin-top-10 {
+    margin-top: 10px!important;
+}
+.margin-right-0 {
+    margin-right: 0!important;
+}
+.margin-left-0 {
+    margin-left: 0!important;
+}
+.full-width {
+    width: 100%;
+    max-width: 100%;
+}
+.md-button {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    min-height: 36px;
+    min-width: 88px;
+    line-height: 36px;
+    vertical-align: middle;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 3px;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+    border: 0;
+    padding: 0 6px;
+    margin: 6px 8px;
+    background: 0 0;
+    color: currentColor;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: inherit;
+    font-variant: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    overflow: hidden;
+    -webkit-transition: box-shadow .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1);
+    transition: box-shadow .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1);
+}
+.md-button {
+    letter-spacing: .01em;
+}
