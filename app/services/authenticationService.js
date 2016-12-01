@@ -34,7 +34,7 @@
 
             /* Use this for real authentication
              ----------------------------------------------*/
-            $http.get('http://localhost:8080/api/authenticate', { username: username, password: password })
+            $http.get('http://localhost:27017/api/authenticate', { username: username, password: password })
                 .success(function (response) {
                     callback(response);
                 });
