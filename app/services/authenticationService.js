@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('Flashcards')
+        .module('FlashCards')
         .factory('AuthenticationService', AuthenticationService);
 
     AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope', '$timeout', 'UserService'];
@@ -34,7 +34,7 @@
 
             /* Use this for real authentication
              ----------------------------------------------*/
-            $http.get('http://localhost:27017/api/authenticate', { username: username, password: password })
+            $http.get('http://localhost:8080/api/authenticate', { username: username, password: password })
                 .success(function (response) {
                     callback(response);
                 });

@@ -4,7 +4,7 @@
     'use strict';
 
     angular
-        .module('Flashcards')
+        .module('FlashCards')
         .controller('registerController', RegisterController);
 
     RegisterController.$inject = ['UserService', '$location', '$rootScope', 'FlashService', '$state'];

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('Flashcards')
+        .module('FlashCards')
         .factory('UserService', UserService);
 
     UserService.$inject = ['$http', '$cookieStore', '$rootScope'];
@@ -23,7 +23,7 @@
         //}
 
         function GetById (id) {
-            return $http.get('http://localhost:27017/api/users/' + id).then(function(data) {
+            return $http.get('http://localhost:8080/api/users/' + id).then(function(data) {
                 return data;
             }).catch(function(err) {
                 console.log(err);
@@ -35,7 +35,7 @@
         //}
 
         function Create(user) {
-            return $http.post('http://localhost:27017/api/users', user).then(function (data) {
+            return $http.post('http://localhost:8080/api/users', user).then(function (data) {
                 return data;
             }).catch(function (err) {
                 console.log(err);
@@ -43,7 +43,7 @@
         }
 
         function Update(user) {
-            return $http.put('http://localhost:27017/api/users/' + user.id, user).then(function (data) {
+            return $http.put('http://localhost:8080/api/users/' + user.id, user).then(function (data) {
                 return data;
             }).catch(function (err) {
                 console.log(err);
@@ -51,7 +51,7 @@
         }
 
         function Delete(id) {
-            return $http.delete('http://locahost:2l7017/api/users/' + id).then(function (data) {
+            return $http.delete('http://locahost:8080/api/users/' + id).then(function (data) {
                 return data;
             }).catch(function (err) {
                 console.log(err);
@@ -59,7 +59,7 @@
         }
 
         //function Login(user) {
-        //    return $http.post('http://localhost:27017/api/users').then(function (data) {
+        //    return $http.post('http://localhost:8080/api/users').then(function (data) {
         //        return data;
         //    }).catch(function (err) {
         //        console.log(err);
@@ -68,7 +68,7 @@
 
         function Login(user) {
             console.log(user);
-            return $http.post('http://localhost:27017/api/authenticate', user).then(function (data) {
+            return $http.post('http://localhost:8080/api/authenticate', user).then(function (data) {
                 console.log(data);
                 return data;
             }).catch(function (err) {

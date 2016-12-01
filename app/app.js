@@ -1,6 +1,6 @@
 
 (function(){
-	angular.module('Flashcards', ['ngMdIcons','ui.router', 'ngMaterial', 'ngCookies']);
+	angular.module('FlashCards', ['ngMdIcons','ui.router', 'ngMaterial', 'ngCookies']);
 
 })()
 

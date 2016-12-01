@@ -1,5 +1,5 @@
 (function(){
-	angular.module('Flashcards')
+    angular.module('FlashCards')
 		.config(['$stateProvider','$urlRouterProvider', homeRouter]);
 
 		function homeRouter($stateProvider,$urlRouterProvider) {
