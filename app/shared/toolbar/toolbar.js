@@ -13,11 +13,6 @@
             function ($mdSidenav, $state, UserService, $rootScope) {
 			    var vm = this;
     
-			    vm.goHome = function() {
-			    	//console.log('hi');
-			    	$state.go('root.home');
-			    }
-
 			$rootScope.$on('$stateChangeSuccess', 
 				function(event, toState, toParams, fromState, fromParams){
 					vm.dir = $state.current.name;
@@ -36,11 +31,17 @@
 				else if (vm.dir == 'Grade') {
 					vm.dir = 'Semester  >  Course  >  Grade';
 				}
+				else if (vm.dir == 'TakeQuiz') {
+					vm.dir = 'Take Quiz';
+				}
+				else if (vm.dir == 'MakeQuiz') {
+					vm.dir = 'Make Quiz';
+				}
 			}
          	vm.dir = $state.current.name;
 			vm.checkdir(vm.dir);
 			vm.goHome = function() {
-				//console.log('hi');
+				console.log('hi');
 				$state.go('root.home');
 			}
 
