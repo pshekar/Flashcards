@@ -35,15 +35,16 @@ module.exports = function(app) {
 	});
 
     //get all quizzes with the semesterID
-	app.get('/api/quizzes/:subjectId',function(req,res){
-		Quizzes.find({
-		    subjectId: req.params.subjectId
-		}, function (err, quizzes) {
-			if(err)
-				res.send(err)
-			res.json(quizzes);
-		});
-	});
+    //Duplicate
+	//app.get('/api/quizzes/:subjectId',function(req,res){
+	//	Quizzes.find({
+	//	    subjectId: req.params.subjectId
+	//	}, function (err, quizzes) {
+	//		if(err)
+	//			res.send(err)
+	//		res.json(quizzes);
+	//	});
+	//});
 
 	app.get('/api/subjects/:studentId', function(req,res) {
 		// use mongoose to get all semester with the student ID
@@ -69,7 +70,7 @@ module.exports = function(app) {
 	//});
 
 
-	app.post('/api/ ', function(req,res) {
+	app.post('/api/quizzes ', function(req,res) {//
 		//console.log("hi");
 		Quizzes.find({ 
 		    subjectId: req.body.subjectId,
@@ -90,7 +91,7 @@ module.exports = function(app) {
 		})
 	})
 
-	app.post('/api/subjects', function(req, res) {
+	app.post('/api/subjects', function(req, res) {//
 		Subjects.find({
 			studentId: req.body.studentId,
 		 	subjectId: req.body.subjectId,
@@ -112,22 +113,22 @@ module.exports = function(app) {
 				
 	});
 
-	//app.post('/api/grade/update', function(req,res) {
-    //	Grade.update({ _id: req.body._id}, {$set: 
-    //		{grade: req.body.grade,
-	//		totalGrade: req.body.totalGrade,
-	//		name: req.body.name,}}, function(err, data) {
-	//			if(err)
-	//				res.send(err);
-	//		})
+	app.post('/api/flashcards/update', function(req,res) {//
+    	Flashcards.update({ _id: req.body._id}, {$set: 
+    		{
+    		    question: req.body.question,
+			    answer: req.body.answer,
+    		}}, function (err, data) {
+				if(err)
+					res.send(err);
+			})
 
-    //});
+    });
 
-	app.post('/api/quizzes/update', function(req,res) {
+	app.post('/api/quizzes/update', function(req,res) {//
     	Quizzes.update({ _id: req.body._id}, {$set: 
     		{
     		    quizName: req.body.quizName,
-    		    quizId: req.body.quizId,
     		}}, function(err, data) {
 				if(err)
 					res.send(err);
@@ -137,7 +138,7 @@ module.exports = function(app) {
 
 
 	//get individual course
-	app.get('/api/quizzes/:quizId', function(req,res){
+	app.get('/api/quizzes/:quizId', function(req,res){//
 		Courses.find({
 			_id: req.params.quizId
 		},function(err,quiz){
@@ -148,7 +149,7 @@ module.exports = function(app) {
 		})
 	});
 
-	app.post('/api/students', function(req, res) {
+	app.post('/api/students', function(req, res) {//
 
 		Student.create({
 			name: req.body.name,
@@ -161,7 +162,7 @@ module.exports = function(app) {
 	});
 
 
-	app.post('/api/flashcards', function(req, res) {
+	app.post('/api/flashcards', function(req, res) {//
 		Flashcards.find({
 			question: req.body.question,
 			answer: req.body.answer,
@@ -205,7 +206,7 @@ module.exports = function(app) {
 	//	})
 	//});
 
-	app.delete('/api/quizzes/:quizId', function(req,res) {
+	app.delete('/api/quizzes/:quizId', function(req,res) {//
 			Quizzes.remove({
 				_id: req.params.quizId}, function(err) {
 						if(err) {
@@ -214,7 +215,7 @@ module.exports = function(app) {
 				})
 	});
 
-	app.delete('/api/flashcards/:quizId',function(req,res) {
+	app.delete('/api/flashcards/:quizId',function(req,res) {//
 		Flashcards.remove({
 			quizId: req.params.quizId}, function(err) {
 				if(err)
@@ -228,15 +229,15 @@ module.exports = function(app) {
 	//				console.log(err);
 	//		})
 	//})
-	//app.delete('/api/single/grade/:_id', function(req,res) {
-	//	Grade.remove({
-	//		_id: req.params._id},function(err,data){
-	//			if (err)
-	//				console.log(err);
-	//			res.send(req.params_id);
-	//		})
-	//})
-	app.delete('/api/subjects/:subjectId', function(req,res) {
+	app.delete('/api/single/flashcards/:_id', function(req,res) {//
+		Flashcards.remove({
+			_id: req.params._id},function(err,data){
+				if (err)
+					console.log(err);
+				res.send(req.params_id);
+			})
+	})
+	app.delete('/api/subjects/:subjectId', function(req,res) {//
 
 		Subjects.remove({
 			_id: req.params.subjectId}, function(err, semester) {
@@ -285,7 +286,7 @@ module.exports = function(app) {
 	//	});
 	//});
 
-	app.get('/api/flashcards/:quizId', function(req,res) {
+	app.get('/api/flashcards/:quizId', function(req,res) {//
 		// use mongoose to get sections with course ID
 		Flashcards.find({
 		    quizId: req.params.quizId,
@@ -301,7 +302,7 @@ module.exports = function(app) {
     // authentication routes
 
     // sample api route
-    app.get('/api/students', function(req,res) {
+    app.get('/api/students', function(req,res) {//
         // use mongoose to get all students in the database
         Student.find({},function(err, students) {
             if (err) // Error handling
@@ -310,7 +311,7 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/api/subjects/:subjectId', function(req,res) {
+    app.get('/api/subjects/:subjectId', function(req,res) {//
         //get the semester with the semesterID
         Subjects.find({
             _id: req.params.subjectId
@@ -322,7 +323,7 @@ module.exports = function(app) {
     });
 
     //get all courses with the semesterID
-    app.get('/api/quizzes/:subjectId',function(req,res){
+    app.get('/api/quizzes/:subjectId',function(req,res){//
         Quizzes.find({
             subjectId: req.params.subjectId
         },function(err,quizzes) {
@@ -332,7 +333,7 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/api/subjects/:studentId', function(req,res) {
+    app.get('/api/subjects/:studentId', function(req,res) {//
         // use mongoose to get all semester with the student ID
         Subjects.find({
             subjectId: req.params.subjectId
@@ -458,16 +459,16 @@ module.exports = function(app) {
     //    });
     //});
 
-    app.get('/api/flashcards/:quizId', function(req,res) {
-        // use mongoose to get sections with course ID
-        Flashcards.find({
-            quizId: req.params.quizId,
-        },function(err, flashcards) {
-            if (err) // Error handling
-                res.send(err);
-            res.json(flashcards); // return all students in JSON
-        });
-    });
+    //app.get('/api/flashcards/:quizId', function(req,res) {
+    //    // use mongoose to get sections with course ID
+    //    Flashcards.find({
+    //        quizId: req.params.quizId,
+    //    },function(err, flashcards) {
+    //        if (err) // Error handling
+    //            res.send(err);
+    //        res.json(flashcards); // return all students in JSON
+    //    });
+    //});
 
     ////Get all students
     //app.get('/api/users', function (req, res) {
