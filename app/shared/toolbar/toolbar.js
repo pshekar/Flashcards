@@ -12,9 +12,6 @@
 		.controller('toolBarController', ['$mdSidenav', '$state', 'UserService', '$rootScope',
             function ($mdSidenav, $state, UserService, $rootScope) {
 			    var vm = this;
-			    vm.openLeftSideNav = function(){ 
-			    	$mdSidenav('left').toggle();
-			    };
     
 			    vm.goHome = function() {
 			    	//console.log('hi');

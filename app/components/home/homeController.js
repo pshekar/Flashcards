@@ -55,7 +55,11 @@
 			}
 
 			vm.makeQuiz = function () {
-			    $state.go('root.home');
+			    $state.go('root.makeQuiz');
+			}
+
+			vm.takeQuiz = function () {
+				$state.go('root.takeQuiz')
 			}
 
 		}]);

@@ -12,12 +12,12 @@
 				            templateUrl:'app/shared/toolbar/toolbar.html',
 				            controller: 'toolBarController',
 				            controllerAs: 'toolBarVM'
-				        },
-				        'sidebar': {
-				            templateUrl:'app/shared/sidebar/sidebar.html',
-				            controller: 'sideBarController',
-				            controllerAs: 'sidebarVM'
 				        }
+				        // 'sidebar': {
+				        //     templateUrl:'app/shared/sidebar/sidebar.html',
+				        //     controller: 'sideBarController',
+				        //     controllerAs: 'sidebarVM'
+				        // }
 				    },
 				    abstract: true
 				})
