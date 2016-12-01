@@ -23,31 +23,31 @@ module.exports = function(app) {
 		});
 	});
 
-	app.get('/api/semester/:semesterId', function(req,res) {
-		//get the semester with the semesterID
-		Semesters.find({
-			_id: req.params.semesterId
-		}, function(err,semester){
+	app.get('/api/subjects/:subjectId', function(req,res) {
+	    //get the subjects with the subjectsId
+		Subjects.find({
+		    _id: req.params.subjectId
+		}, function(err,subjects){
 			if(err)
 					res.send(err)
-			res.json(semester);
+			res.json(subjects);
 		});
 	});
 
-	//get all courses with the semesterID
-	app.get('/api/courses/:semesterId',function(req,res){
-		Courses.find({
-			semesterId: req.params.semesterId
-		},function(err,courses) {
+    //get all quizzes with the semesterID
+	app.get('/api/quizzes/:subjectId',function(req,res){
+		Quizzes.find({
+		    subjectId: req.params.subjectId
+		}, function (err, quizzes) {
 			if(err)
 				res.send(err)
-			res.json(courses);
+			res.json(quizzes);
 		});
 	});
 
 	app.get('/api/subjects/:studentId', function(req,res) {
 		// use mongoose to get all semester with the student ID
-		Semesters.find({
+		Subjects.find({
 			studentId: req.params.studentId
 		},function(err, students) {
 			if (err) // Error handling
@@ -56,35 +56,32 @@ module.exports = function(app) {
 		});
 	});
 
-	app.get('/api/semesters/current/:studentId', function(req,res) {
-		// use mongoose to get current semester with the student ID
-		Semesters.find({
-			studentId: req.params.studentId,
-			currentSemester: true,
-		},function(err, students) {
-			if (err) // Error handling
-				res.send(err);
-			res.json(students); // return all students in JSON
-		});
-	});
+	//app.get('/api/semesters/current/:studentId', function(req,res) {
+	//	// use mongoose to get current semester with the student ID
+	//	Semesters.find({
+	//		studentId: req.params.studentId,
+	//		currentSemester: true,
+	//	},function(err, students) {
+	//		if (err) // Error handling
+	//			res.send(err);
+	//		res.json(students); // return all students in JSON
+	//	});
+	//});
 
 
-	app.post('/api/courses', function(req,res) {
+	app.post('/api/ ', function(req,res) {
 		//console.log("hi");
-		Courses.find({ 
-			semesterId: req.body.semesterId,
-			courseName: req.body.courseName,
-			courseId: req.body.courseId,
-			creditHours: req.body.creditHours,
+		Quizzes.find({ 
+		    subjectId: req.body.subjectId,
+		    quizName: req.body.quizName,
+		    quizId: req.body.quizId,
 		},function(err,data) {
 			if (data.length != 0){}
 			else {
-				Courses.create({
-					courseName: req.body.courseName,
-					courseId: req.body.courseId,
-					semesterId: req.body.semesterId,
-					creditHours: req.body.creditHours,
-					letterGrade: req.body.letterGrade
+				Quizzes.create({
+				    quizName: req.body.quizName,
+				    quizId: req.body.quizId,
+				    subjectId: req.body.subjectId
 				},function(err,data) {
 				if (err)
 					res.send(err);
@@ -93,67 +90,44 @@ module.exports = function(app) {
 		})
 	})
 
-	app.post('/api/semesters', function(req, res) {
-		Semesters.find({
+	app.post('/api/subjects', function(req, res) {
+		Subjects.find({
 			studentId: req.body.studentId,
-		 	year: req.body.year,
-		 	name: req.body.name,
-		 	GPA: req.body.GPA,
+		 	subjectId: req.body.subjectId,
+		 	subjectName: req.body.subjectName
 		}, function(err,data) {
 			if (data.length != 0){}
 			else {
-				if(req.body.currentSemester==true) {
-						Semesters.update({currentSemester: true}, {currentSemester: false}, {multi: true },function(err,res) {
-							Semesters.create({
-						 	currentSemester: req.body.currentSemester,
-						 	studentId: req.body.studentId,
-						 	year: req.body.year,
-						 	name: req.body.name,
-						 	GPA: req.body.GPA,
-						 },function(err,data){
-					 		if (err)
-				 				res.send(err);
-						 });
-
-						if(err) {
-							res.send(err);
-						}
-						})
-				}
-				else {
-				 Semesters.create({
-				 	currentSemester: req.body.currentSemester,
-				 	studentId: req.body.studentId,
-				 	year: req.body.year,
-				 	name: req.body.name,
+				 Subjects.create({
+				     studentId: req.body.studentId,
+				     subjectId: req.body.subjectId,
+				     subjectName: req.body.subjectName
 				 },function(err,data){
 				 	if (err)
 				 		res.send(err);
 				 });
-				}
+				
 			}
 		})
 				
 	});
 
-	app.post('/api/grade/update', function(req,res) {
-    	Grade.update({ _id: req.body._id}, {$set: 
-    		{grade: req.body.grade,
-			totalGrade: req.body.totalGrade,
-			name: req.body.name,}}, function(err, data) {
-				if(err)
-					res.send(err);
-			})
+	//app.post('/api/grade/update', function(req,res) {
+    //	Grade.update({ _id: req.body._id}, {$set: 
+    //		{grade: req.body.grade,
+	//		totalGrade: req.body.totalGrade,
+	//		name: req.body.name,}}, function(err, data) {
+	//			if(err)
+	//				res.send(err);
+	//		})
 
-    });
+    //});
 
-	app.post('/api/course/update', function(req,res) {
-    	Courses.update({ _id: req.body._id}, {$set: 
+	app.post('/api/quizzes/update', function(req,res) {
+    	Quizzes.update({ _id: req.body._id}, {$set: 
     		{
-			courseName: req.body.courseName,
-			courseId: req.body.courseId,
-			creditHours: req.body.creditHours,
-			letterGrade: req.body.letterGrade
+    		    quizName: req.body.quizName,
+    		    quizId: req.body.quizId,
     		}}, function(err, data) {
 				if(err)
 					res.send(err);
@@ -163,14 +137,14 @@ module.exports = function(app) {
 
 
 	//get individual course
-	app.get('/api/course/:courseId', function(req,res){
+	app.get('/api/quizzes/:quizId', function(req,res){
 		Courses.find({
-			_id: req.params.courseId
-		},function(err,course){
+			_id: req.params.quizId
+		},function(err,quiz){
 			if (err) 
 				res.send(err);
 			
-			res.json(course);
+			res.json(quiz);
 		})
 	});
 
@@ -187,18 +161,19 @@ module.exports = function(app) {
 	});
 
 
-	app.post('/api/section', function(req, res) {
-		Section.find({
-			sectionName: req.body.name,
-			courseId: req.body.courseId,
-			weight: req.body.weight,
+	app.post('/api/flashcards', function(req, res) {
+		Flashcards.find({
+			question: req.body.question,
+			answer: req.body.answer,
+			flashcardId: req.body.flashcardId,
+            quizId: req.body.quizId
 		},function(err,data) {
 			if(data.length != 0) {}
 			else {
-				Section.create({
-					sectionName: req.body.name,
-					courseId: req.body.courseId,
-					weight: req.body.weight,
+				Flashcards.create({
+					question: req.body.question,
+					quizId: req.body.quizId,
+					answer: req.body.answer,
 				},function(err,data){
 					if (err)
 						res.send(err);
@@ -208,82 +183,82 @@ module.exports = function(app) {
 	});
 
 
-	app.post('/api/grade', function(req, res) {
-		Grade.find({
-			grade: req.body.grade,
-			sectionId: req.body.sectionId,
-			totalGrade: req.body.totalGrade,
-			name: req.body.name
-		},function(err, data) {
-			if (data.length != 0) {}
-			else {
-				Grade.create({
-					grade: req.body.grade,
-					sectionId: req.body.sectionId,
-					totalGrade: req.body.totalGrade,
-					name: req.body.name
-				},function(err,data){
-					if (err)
-						res.send(err);
-				});
-			}
-		})
-	});
+	//app.post('/api/grade', function(req, res) {
+	//	Grade.find({
+	//		grade: req.body.grade,
+	//		sectionId: req.body.sectionId,
+	//		totalGrade: req.body.totalGrade,
+	//		name: req.body.name
+	//	},function(err, data) {
+	//		if (data.length != 0) {}
+	//		else {
+	//			Grade.create({
+	//				grade: req.body.grade,
+	//				sectionId: req.body.sectionId,
+	//				totalGrade: req.body.totalGrade,
+	//				name: req.body.name
+	//			},function(err,data){
+	//				if (err)
+	//					res.send(err);
+	//			});
+	//		}
+	//	})
+	//});
 
-	app.delete('/api/course/:courseId', function(req,res) {
-			Courses.remove({
-				_id: req.params.courseId}, function(err) {
+	app.delete('/api/quizzes/:quizId', function(req,res) {
+			Quizzes.remove({
+				_id: req.params.quizId}, function(err) {
 						if(err) {
 							console.log(err);
 						}
 				})
 	});
 
-	app.delete('/api/section/:courseId',function(req,res) {
-		Section.remove({
-			courseId: req.params.courseId}, function(err) {
+	app.delete('/api/flashcards/:quizId',function(req,res) {
+		Flashcards.remove({
+			quizId: req.params.quizId}, function(err) {
 				if(err)
 					console.log(err);
 			})
 	})
-	app.delete('/api/grade/:sectionId', function(req,res) {
-		Grade.remove({
-			sectionId: req.params.sectionId},function(err){
-				if(err)
-					console.log(err);
-			})
-	})
-	app.delete('/api/single/grade/:_id', function(req,res) {
-		Grade.remove({
-			_id: req.params._id},function(err,data){
-				if (err)
-					console.log(err);
-				res.send(req.params_id);
-			})
-	})
-	app.delete('/api/semester/:semesterId', function(req,res) {
+	//app.delete('/api/grade/:sectionId', function(req,res) {
+	//	Grade.remove({
+	//		sectionId: req.params.sectionId},function(err){
+	//			if(err)
+	//				console.log(err);
+	//		})
+	//})
+	//app.delete('/api/single/grade/:_id', function(req,res) {
+	//	Grade.remove({
+	//		_id: req.params._id},function(err,data){
+	//			if (err)
+	//				console.log(err);
+	//			res.send(req.params_id);
+	//		})
+	//})
+	app.delete('/api/subjects/:subjectId', function(req,res) {
 
-		Semesters.remove({
-			_id: req.params.semesterId}, function(err, semester) {
+		Subjects.remove({
+			_id: req.params.subjectId}, function(err, semester) {
 				if(err)
 					console.log(err)
 		})
-		Courses.find({semesterId: req.params.semesterId}, function(err,courses) {
+		Quizzes.find({ subjectId: req.params.subjectId }, function (err, quizzes) {
 			
 			if (err)
 				console.log(err)
-			for ( var i = 0; i < courses.length; i++) {
-				Section.find({courseId: courses[i]._id}, function(err, sections) {
+			for (var i = 0; i < quizzes.length; i++) {
+			    Flashcards.find({ quizId: quizzes[i]._id }, function (err, flashcards) {
 					if(err)
 						console.log(err)
-					for( var j = 0 ; j< sections.length; j++) {
-						Grade.remove({sectionId: sections[j]._id}, function(err,grades) {
-							if(err)
-								console.log(err);
-						})
-					}
+					//for (var j = 0 ; j < flashcards.length; j++) {
+					//	Grade.remove({sectionId: sections[j]._id}, function(err,grades) {
+					//		if(err)
+					//			console.log(err);
+					//	})
+					//}
 				}) 
-				Section.remove({courseId: courses[i]._id}, function(err,sections) {
+				Flashcards.remove({quizId: quizzes[i]._id}, function(err,flashcards) {
 					if(err)
 						console.log(err);
 				})
@@ -291,7 +266,7 @@ module.exports = function(app) {
 			}
 	
 		})
-		Courses.remove({semesterId: req.params.semesterId}, function(err,courses) {
+		Quizzes.remove({ subjectId: req.params.subjectId }, function (err, quizzes) {
 			if (err)
 				console.log(err);
 		})
@@ -299,25 +274,25 @@ module.exports = function(app) {
 		
 	});
 
-	app.get('/api/grade/:sectionId', function(req,res) {
-		// use mongoose to get current grade with the section ID
-		Grade.find({
-			sectionId: req.params.sectionId,
-		},function(err, grades) {
-			if (err) // Error handling
-				res.send(err);
-			res.json(grades); // return all students in JSON
-		});
-	});
+	//app.get('/api/grade/:sectionId', function(req,res) {
+	//	// use mongoose to get current grade with the section ID
+	//	Grade.find({
+	//		sectionId: req.params.sectionId,
+	//	},function(err, grades) {
+	//		if (err) // Error handling
+	//			res.send(err);
+	//		res.json(grades); // return all students in JSON
+	//	});
+	//});
 
-	app.get('/api/section/:courseId', function(req,res) {
+	app.get('/api/flashcards/:quizId', function(req,res) {
 		// use mongoose to get sections with course ID
-		Section.find({
-			courseId: req.params.courseId,
-		},function(err, sections) {
+		Flashcards.find({
+		    quizId: req.params.quizId,
+		},function(err, quizzes) {
 			if (err) // Error handling
 				res.send(err);
-			res.json(sections); // return all students in JSON
+			res.json(quizzes); // return all students in JSON
 		});
 	});
 
@@ -335,32 +310,32 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/api/semester/:semesterId', function(req,res) {
+    app.get('/api/subjects/:subjectId', function(req,res) {
         //get the semester with the semesterID
-        Semesters.find({
-            _id: req.params.semesterId
-        }, function(err,semester){
+        Subjects.find({
+            _id: req.params.subjectId
+        }, function(err,subject){
             if(err)
                 res.send(err)
-            res.json(semester);
+            res.json(subject);
         });
     });
 
     //get all courses with the semesterID
-    app.get('/api/courses/:semesterId',function(req,res){
-        Courses.find({
-            semesterId: req.params.semesterId
-        },function(err,courses) {
+    app.get('/api/quizzes/:subjectId',function(req,res){
+        Quizzes.find({
+            subjectId: req.params.subjectId
+        },function(err,quizzes) {
             if(err)
                 res.send(err)
-            res.json(courses);
+            res.json(quizzes);
         });
     });
 
-    app.get('/api/semesters/:studentId', function(req,res) {
+    app.get('/api/subjects/:studentId', function(req,res) {
         // use mongoose to get all semester with the student ID
-        Semesters.find({
-            studentId: req.params.studentId
+        Subjects.find({
+            subjectId: req.params.subjectId
         },function(err, students) {
             if (err) // Error handling
                 res.send(err);
@@ -368,17 +343,17 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/api/semesters/current/:studentId', function(req,res) {
-        // use mongoose to get current semester with the student ID
-        Semesters.find({
-            studentId: req.params.studentId,
-            currentSemester: true,
-        },function(err, students) {
-            if (err) // Error handling
-                res.send(err);
-            res.json(students); // return all students in JSON
-        });
-    });
+    //app.get('/api/semesters/current/:studentId', function(req,res) {
+    //    // use mongoose to get current semester with the student ID
+    //    Semesters.find({
+    //        studentId: req.params.studentId,
+    //        currentSemester: true,
+    //    },function(err, students) {
+    //        if (err) // Error handling
+    //            res.send(err);
+    //        res.json(students); // return all students in JSON
+    //    });
+    //});
 
 
     // app.post('/api/courses', function(req,res) {
@@ -472,25 +447,25 @@ module.exports = function(app) {
     // });
 
 
-    app.get('/api/grade/:sectionId', function(req,res) {
-        // use mongoose to get current grade with the section ID
-        Grade.find({
-            sectionId: req.params.studentId,
-        },function(err, grades) {
-            if (err) // Error handling
-                res.send(err);
-            res.json(grades); // return all students in JSON
-        });
-    });
+    //app.get('/api/grade/:sectionId', function(req,res) {
+    //    // use mongoose to get current grade with the section ID
+    //    Grade.find({
+    //        sectionId: req.params.studentId,
+    //    },function(err, grades) {
+    //        if (err) // Error handling
+    //            res.send(err);
+    //        res.json(grades); // return all students in JSON
+    //    });
+    //});
 
-    app.get('/api/section/:courseId', function(req,res) {
+    app.get('/api/flashcards/:quizId', function(req,res) {
         // use mongoose to get sections with course ID
-        Section.find({
-            courseId: req.params.studentId,
-        },function(err, sections) {
+        Flashcards.find({
+            quizId: req.params.quizId,
+        },function(err, flashcards) {
             if (err) // Error handling
                 res.send(err);
-            res.json(sections); // return all students in JSON
+            res.json(flashcards); // return all students in JSON
         });
     });
 
