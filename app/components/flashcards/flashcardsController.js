@@ -1,17 +1,17 @@
 ﻿(function () {
     angular.module('FlashCards')
-		.controller('takeQuizController', ['$mdDialog', 'studentService', 'UserService', '$cookies', '$state', '$rootScope', '$timeout', '$scope',
+		.controller('flashcardsController', ['$mdDialog', 'studentService', 'UserService', '$cookies', '$state', '$rootScope', '$timeout', '$scope',
             function ($mdDialog, studentService, UserService, $cookies, $state, $rootScope, $timeout, $scope) {
 
                 var vm = this;
 
                 vm.makeQuiz = function() {
-                    // console.log('hi');
+                    console.log('hi');
                     $state.go('root.makeQuiz');
                 }
 
                 vm.goToQuiz = function() {
-                    $state.go('root.flashcards');
+                    $state.go('root.quizPage');
                 }
 
                 var timeout = null;
@@ -40,7 +40,7 @@
 
                 };
 
-                $scope.$watch('quizVM.quizName', debounceSaveUpdates);
+                $scope.$watch('subjectsVM.quizName', debounceSaveUpdates);
 
             }]);
 
