@@ -1,9 +1,18 @@
 ﻿(function () {
     angular.module('FlashCards')
-		.controller('quizController', ['$mdDialog', 'studentService', 'UserService', '$cookies', '$state', '$rootScope', '$timeout', '$scope',
+		.controller('takeQuizController', ['$mdDialog', 'studentService', 'UserService', '$cookies', '$state', '$rootScope', '$timeout', '$scope',
             function ($mdDialog, studentService, UserService, $cookies, $state, $rootScope, $timeout, $scope) {
 
                 var vm = this;
+
+                vm.makeQuiz = function() {
+                    console.log('hi');
+                    $state.go('root.makeQuiz');
+                }
+
+                vm.goToQuiz = function() {
+                    $state.go('root.quizPage');
+                }
 
                 var timeout = null;
                 var saveInProgress = false;

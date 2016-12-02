@@ -3,14 +3,13 @@
 			<md-button class="md-icon-button" aria-label="Menu" hide-gt-md>
 					<ng-md-icon icon="menu"></ng-md-icon>
 			</md-button>
-				{{toolBarVM.dir}}
-				<div flex></div>
-
-			<md-button aria-label="Menu" ng-click="toolbarVM.goHome()">
-				Flashcards
-			</md-button>
+			{{toolBarVM.dir}}
 			<div flex></div>
-				<md-button ng-click="toolBarVM.Logout()" class="btn btn-primary">Logout</md-button>
+
+			<md-button class="toolbar-btn" ng-click="toolBarVM.goHome()">Flashcards</md-button>
+
+			<div flex></div>
+				<md-button ng-click="toolBarVM.Logout()" class="btn btn-primary logout-btn">Logout</md-button>
 				<!-- <md-menu>
 					<md-button class="md-icon-button" aria-label="Open settings menu" ng-click="$mdOpenMenu($event)">
 							<ng-md-icon icon="settings">

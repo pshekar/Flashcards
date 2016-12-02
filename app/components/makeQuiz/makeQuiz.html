@@ -1,9 +1,21 @@
-﻿<form name="quiz" role="form">
-    <div layout="row">
-        <md-input-container flex="100">
-            <label>Quiz Name:</label>
-            <input ng-model="quizVM.quiz.quizName" />
-        </md-input-container>
-          
-    </div>
-</form>
+﻿<md-content flex md-scroll-y layout-fill layout-padding>
+	<div layout="row" layout-align="center center">
+		<md-card flex-gt-md="90" flex-gt-md="40" layout-padding>
+			<md-card-content>
+				<h1>Make Quiz</h1>
+				<md-divider></md-divider>
+				<span flex></span>
+				<form name="quiz" role="form">
+				    <div layout="row">
+				    	<span flex="10"></span>
+				        <h2 flex="10">Quiz Name:</h2>
+				        <md-input-container flex="85">
+				            <input type="text" placeholder="Quiz Name" ng-model="makeQuizVM.quiz.quizName" />
+				        </md-input-container>
+				          
+				    </div>
+				</form>
+			</md-card-content>
+		</md-card>
+	</div>
+</md-content>

@@ -1,28 +1,57 @@
-﻿<div class="specialBoxes">
+﻿<div class="specialBoxes" layout="column" style="width:100%">
 	<div class="cardPadding" layout="row" layout-wrap>
-		<md-card style="width: 350px; height:200px" flex="33">
+		<md-card style="width: 600px;height:200px">
 			<md-card-header style="height:100%">
 				<md-card-header-text layout-wrap>
-					<md-button style="height:100%">
+					<md-button ng-click="takeQuizVM.goToQuiz()" class="quiz-btn" style="height:100%">
                         Science
                     </md-button>
 				</md-card-header-text>
 			</md-card-header>
 		</md-card>
-		<md-card style="width: 350px; height:200px" flex="33">
+		<md-card style="width: 600px; height:200px">
 			<md-card-header style="height:100%">
 				<md-card-header-text layout-wrap>
-					<md-button style="height:100%">
+					<md-button ng-click="takeQuizVM.goToQuiz()" class="quiz-btn" style="height:100%">
                         Math
                     </md-button>
 				</md-card-header-text>
 			</md-card-header>
 		</md-card>
-		<md-card style="width: 350px; height:200px" flex="33">
+		<md-card style="width: 600px; height:200px">
 			<md-card-header style="height:100%">
 				<md-card-header-text layout-wrap>
-					<md-button style="height:100%">
+					<md-button ng-click="takeQuizVM.goToQuiz()" class="quiz-btn" style="height:100%">
                         History
+                    </md-button>
+				</md-card-header-text>
+			</md-card-header>
+		</md-card>
+	</div>
+	<div class="cardPadding" layout="row" layout-wrap>
+		<md-card style="width: 600px; height:200px">
+			<md-card-header style="height:100%">
+				<md-card-header-text layout-wrap>
+					<md-button ng-click="takeQuizVM.goToQuiz()" class="quiz-btn" style="height:100%">
+                        Geography
+                    </md-button>
+				</md-card-header-text>
+			</md-card-header>
+		</md-card>
+		<md-card style="width: 600px; height:200px">
+			<md-card-header style="height:100%">
+				<md-card-header-text layout-wrap>
+					<md-button ng-click="takeQuizVM.goToQuiz()" class="quiz-btn" style="height:100%">
+                        Vocabulary
+                    </md-button>
+				</md-card-header-text>
+			</md-card-header>
+		</md-card>
+		<md-card style="width: 600px; height:200px">
+			<md-card-header style="height:100%">
+				<md-card-header-text layout-wrap>
+					<md-button ng-click="takeQuizVM.makeQuiz()" class="quiz-btn" style="height:100%">
+                        Make Your Own!
                     </md-button>
 				</md-card-header-text>
 			</md-card-header>

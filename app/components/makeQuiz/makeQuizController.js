@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('FlashCards')
-		.controller('quizController', ['$mdDialog', 'studentService', 'UserService', '$cookies', '$state', '$rootScope', '$timeout', '$scope',
+		.controller('makeQuizController', ['$mdDialog', 'studentService', 'UserService', '$cookies', '$state', '$rootScope', '$timeout', '$scope',
             function ($mdDialog, studentService, UserService, $cookies, $state, $rootScope, $timeout, $scope) {
 
                 var vm = this;
@@ -31,7 +31,7 @@
 
                 };
 
-                $scope.$watch('quizVM.quizName', debounceSaveUpdates);
+                $scope.$watch('makeQuizVM.quizName', debounceSaveUpdates);
 
             }]);
 

@@ -312,9 +312,23 @@ element.style {
     transition: box-shadow .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1);
 }
 
-.home-btn{
+.home-btn {
     font-size: 64px;
 }
+
+.toolbar-btn {
+    font-size: 24px;
+}
+
+.logout-btn {
+    font-size: 18px;
+}
+
+.quiz-btn {
+    font-size: 28px;
+    text-transform: none;
+}
+
 .md-button {
     letter-spacing: .01em;
 }
