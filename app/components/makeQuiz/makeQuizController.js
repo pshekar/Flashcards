@@ -20,7 +20,8 @@
                 //    })
                 //};
 
-                vm.createQuiz = function() {
+                vm.createQuiz = function () {
+                    console.log(vm.quiz.quizName);
                     studentService.postQuiz(vm.quiz)
                         .then(function (response) {
                             console.log("create quiz " + response);

@@ -10,22 +10,22 @@
 					})
 				};
 			//get all semesters that this student has
-			var getSubjects = function(studentId) {//
-			    return $http.get('http://localhost:27017/api/subjects/' + studentId).then(function (data) {
-						return data;
-					}).catch(function(err) {
-						console.log(err);
-					})
-				};	
+			//var getSubjects = function(studentId) {
+			//    return $http.get('http://localhost:27017/api/subjects/' + studentId).then(function (data) {
+			//			return data;
+			//		}).catch(function(err) {
+			//			console.log(err);
+			//		})
+			//	};	
 				
 				//get the semester with this semesterID
-			var getSubject = function (subjectId) {//
-			    return $http.get('http://localhost:27017/api/subjects/' + subjectId).then(function (data) {
-					return data;
-				}).catch(function(err) {
-					console.log(err);
-				})
-			};
+			//var getSubject = function (subjectId) {
+			//    return $http.get('http://localhost:27017/api/subjects/' + subjectId).then(function (data) {
+			//		return data;
+			//	}).catch(function(err) {
+			//		console.log(err);
+			//	})
+			//};
 
 			//var getCurrentSemester = function(studentId) {
 			//    return $http.get('http://localhost:27017/api/semesters/current/' + studentId).then(function (data) {
@@ -36,6 +36,7 @@
 			//	};		
 
 			var postQuiz = function (quizObj) {//
+			    console.log("StudentService" + quizObj);
 			    return $http.post('http://localhost:27017/api/quizzes', quizObj).then(function (err, data) {
 						return data;
 					}).catch(function(err){
@@ -52,17 +53,17 @@
 
 			};
 
-			var postSubjects = function(subjectObj) {//
-			    return $http.post('http://localhost:27017/api/subjects', subjectObj).then(function (err, data) {
-						return data;
-					}).catch(function(err){
-						console.log(err);
-					})
+			//var postSubjects = function(subjectObj) {
+			//    return $http.post('http://localhost:27017/api/subjects', subjectObj).then(function (err, data) {
+			//			return data;
+			//		}).catch(function(err){
+			//			console.log(err);
+			//		})
 
-			};
+			//};
 
-			var getQuizzes = function(subjectId) {//
-			    return $http.get('http://localhost:27017/api/quizzes/' + subjectId).then(function (data) {
+			var getQuizzes = function(studentId) {//
+			    return $http.get('http://localhost:27017/api/quizzes/' + studentId).then(function (data) {
 						return data;
 					}).catch(function(err){
 						console.log(err);
@@ -151,25 +152,22 @@
 			}
 			var updateQuiz = function (quizObj) {//
 			    return $http.post('http://localhost:27017/api/quizzes/update', quizObj).then(function (err, data) {
-						return data;
-					}).catch(function(err){
-						console.log(err);
-					})
+			        return data;
+			    }).catch(function (err) {
+			        console.log(err);
+			    })
 			}
-			var deleteSubject = function (subjectId) {//
-			    return $http.delete('http://localhost:27017/api/subjects/' + subjectId).then(function (data) {
-					return data;
-				}).catch(function(err) {
-					console.log(err);
-				})
-			}
+			//var deleteSubject = function (subjectId) {
+			//    return $http.delete('http://localhost:27017/api/subjects/' + subjectId).then(function (data) {
+			//		return data;
+			//	}).catch(function(err) {
+			//		console.log(err);
+			//	})
+			//}
 				return {
 				    getStudents: getStudents,
-				    getSubjects: getSubjects,
-				    getSubject: getSubject,
 				    postQuiz: postQuiz,
 				    postStudents: postStudents,
-				    postSubjects: postSubjects,
 				    getQuizzes: getQuizzes,
 				    getQuiz: getQuiz,
 				    postFlashcards: postFlashcards,
@@ -178,7 +176,7 @@
 				    updateFlashcards: updateFlashcards,
 				    deleteFlashCard: deleteFlashCard,
 				    updateQuiz: updateQuiz,
-				    deleteSubject: deleteSubject
+				    deleteQuiz: deleteQuiz
 				};
 		}])
 })()

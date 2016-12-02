@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var quizzes = new Schema({
     quizName: String,
     quizId: String,
-    subjectId: String
+    studentId: String
 })
 // define student model
 // module.export allows us to pass this to other files when it is called.
