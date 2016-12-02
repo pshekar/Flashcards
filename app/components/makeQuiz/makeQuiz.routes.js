@@ -3,8 +3,6 @@
 		.config(['$stateProvider', '$urlRouterProvider', makeQuizRouter]);
 
     function makeQuizRouter($stateProvider, $urlRouterProvider) {
-        var vm = this;
-
         $stateProvider
             .state('root.makeQuiz', {
                 url: '/makeQuiz',

@@ -22,7 +22,7 @@
 			UserService.GetById($rootScope.globals.currentUser.username).then(function (data) {
 			    console.log(data);
 				$rootScope.globals.studentName = data.data[0].name;
-				vm.students.name = data.data[0].name;
+				//vm.students.name = data.data[0].name;
 
 			})
 
