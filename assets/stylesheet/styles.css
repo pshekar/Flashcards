@@ -312,8 +312,16 @@ element.style {
     transition: box-shadow .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1);
 }
 
-.home-btn {
+.home-btn1 {
     font-size: 64px;
+    background-color: rgba(63, 191, 191, 1);
+    color: white;
+}
+
+.home-btn2 {
+    font-size: 64px;
+    background-color: rgba(63, 63, 191, 1);
+    color: white;
 }
 
 .toolbar-btn {

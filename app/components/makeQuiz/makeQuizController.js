@@ -5,6 +5,20 @@
 
                 var vm = this;
 
+                vm.openDialog = function(event) {
+                    var dialog = $mdDialog.show({
+                        targetEvent:event,
+                        clickOutsideToClose:true,
+                        templateUrl: 'app/components/makeQuiz/makeQuiz.html',
+                        controller: 'makeQuizController',
+                        locals: {
+                            studentId: vm.studentId
+                        },
+                        controllerAs: 'makeQuizVM'
+                    }).then(function(){
+                        //do stuff not sure what
+                    })
+                };
                 var timeout = null;
                 var saveInProgress = false;
                 var saveFinished = function () {

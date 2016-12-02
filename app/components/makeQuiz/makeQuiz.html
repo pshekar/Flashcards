@@ -11,9 +11,25 @@
 				        <h2 flex="10">Quiz Name:</h2>
 				        <md-input-container flex="85">
 				            <input type="text" placeholder="Quiz Name" ng-model="makeQuizVM.quiz.quizName" />
-				        </md-input-container>
-				          
+				        </md-input-container>     
 				    </div>
+				    <div layout="row">
+				    	<span flex="10"></span>
+				    	<h2 flex="10">Question:</h2>
+				    	<md-input-container flex="30">
+				    		<input type="text" placeholder="Question" ng-model="makeQuizVM.quiz.question" />
+				    	</md-input-container>
+				    	<span flex="5"></span>
+				    	<h2 flex="10">Answer:</h2>
+				    	<md-input-container flex="30">
+				    		<input type="text" placeholder="Question" ng-model="makeQuizVM.quiz.answer" />
+				    	</md-input-container>
+				    </div>
+				    <div layout="row" layout-align="end end">
+					    <md-button aria-label="menu" class="md-fab md-primary md-raised" layout-align="end end" ng-click="makeQuizVM.openDialog($event)">
+	          				<ng-md-icon  icon="add" size="24" style="fill: white"></ng-md-icon>
+	   					</md-button>
+	   				</div>
 				</form>
 			</md-card-content>
 		</md-card>
