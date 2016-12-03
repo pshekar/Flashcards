@@ -1,0 +1,35 @@
+<md-dialog style="width:700px">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Make a Flashcard</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div layout="row">
+        <h2 flex="15">Question:</h2>
+        <md-input-container flex="66">
+          <input type="text" name="Question" placeholder="Question" ng-model="fcDialogVM.flashcard.question">
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <h2 flex="15">Answer:</h2>
+        <md-input-container flex="66">
+          <input type="text" name="Answer" placeholder="Answer" ng-model="fcDialogVM.flashcard.answer">
+        </md-input-container>
+      </div>
+      <md-divider></md-divider>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="fcDialogVM.cancel()">
+        Cancel
+      </md-button>
+      <span flex></span>
+      <md-button ng-click="fcDialogVM.add()">
+        Add
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('FlashCards')
-		.controller('flashcardsController', ['$mdDialog', 'studentService', 'UserService', '$cookies', '$state', '$rootScope', '$timeout', '$scope',
+		.controller('quizController', ['$mdDialog', 'studentService', 'UserService', '$cookies', '$state', '$rootScope', '$timeout', '$scope',
             function ($mdDialog, studentService, UserService, $cookies, $state, $rootScope, $timeout, $scope) {
 
                 var vm = this;
@@ -39,21 +39,6 @@
                     }
 
                 };
-
-                vm.showAdvanced = function(ev) {
-                $mdDialog.show({
-                  controller: "fcDialogController",
-                  controllerAs: "fcDialogVM",
-                  templateUrl: 'app/components/flashcards/dialog/fcDialog.html',
-                  parent: angular.element(document.body),
-                  // locals: {
-                  //       semester: semester
-                  // },
-                  targetEvent: ev,
-                  clickOutsideToClose:true,
-                  fullscreen: vm.customFullscreen // Only for -xs, -sm breakpoints.
-                })
-              };
 
                 $scope.$watch('subjectsVM.quizName', debounceSaveUpdates);
 
