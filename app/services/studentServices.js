@@ -36,7 +36,6 @@
 			//	};		
 
 			var postQuiz = function (quizObj) {//
-			    console.log("StudentService" + quizObj);
 			    return $http.post('http://localhost:27017/api/quizzes', quizObj).then(function (err, data) {
 						return data;
 					}).catch(function(err){
