@@ -4,7 +4,9 @@
             function ($mdDialog, studentService, UserService, $cookies, $state, $rootScope, $timeout, $scope) {
 
                 var vm = this;
+                vm.studentId = $cookies.get('studentId');
 
+                vm.quiz = { quizName: "", quizId: "", studentId: vm.studentId };
                 //vm.openDialog = function(event) {
                 //    var dialog = $mdDialog.show({
                 //        targetEvent:event,
@@ -22,18 +24,19 @@
 
                 vm.createQuiz = function () {
                     console.log(vm.quiz.quizName);
-                    studentService.postQuiz(vm.quiz)
-                        .then(function (response) {
-                            console.log("create quiz " + response);
-                            if (response == null) {
-                                $scope.error = "postQuiz";
-                                console.log("error" + $scope.error);
-                            }
-                            else if (response.status == 200) {
-                                //change to edit quiz
-                                $state.go('root.home');
-                            }
-                        });
+                    studentService.postQuiz(vm.quiz);
+                        //.then(function (response) {
+                        //    console.log("create quiz " + response);
+                        //    if (response == null) {
+                        //        $scope.error = "postQuiz";
+                        //        console.log("error" + $scope.error);
+                        //    }
+                        //    else if (response.status == 200) {
+                        //        //change to edit quiz
+                        //        $state.go('root.home');
+                        //    }
+                    //});
+                    $state.go('root.home');
                 };
 
                 //var timeout = null;
