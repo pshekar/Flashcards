@@ -25,18 +25,20 @@
                 //vm.quiz = vm.quiz.quizName;
                 vm.createQuiz = function () {
                     console.log(vm.quiz.quizName);
-                    studentService.postQuiz(vm.quiz)
-                        .then(function (response) {
-                            console.log("create quiz " + response);
-                            if (response == null) {
-                                $scope.error = "postQuiz";
-                                console.log("error " + $scope.error);
-                            }
-                            else if (response.status == 200) {
-                                //change to edit quiz
-                                $state.go('root.flashcards');
-                            }
-                        });
+                    studentService.postQuiz(vm.quiz);
+                    $cookies.put('quizId', vm.quiz.quizName);
+                    $state.go('root.flashcards');
+                        //.then(function (response) {
+                        //    console.log("create quiz " + response);
+                        //    if (response == null) {
+                        //        $scope.error = "postQuiz";
+                        //        console.log("error " + $scope.error);
+                        //    }
+                        //    else if (response.status == 200) {
+                        //        //change to edit quiz
+                        //        $state.go('root.flashcards');
+                        //    }
+                        //});
                 };
 
                 //var timeout = null;

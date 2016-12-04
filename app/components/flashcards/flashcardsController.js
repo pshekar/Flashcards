@@ -4,6 +4,9 @@
             function ($mdDialog, studentService, UserService, $cookies, $state, $rootScope, $timeout, $scope) {
 
                 var vm = this;
+                vm.flashcards = [];
+                vm.quizId = $cookies.get('quizId');
+
 
                 vm.makeQuiz = function() {
                     console.log('hi');
@@ -14,48 +17,26 @@
                     $state.go('root.quiz');
                 }
 
-                var timeout = null;
-                var saveInProgress = false;
-                var saveFinished = function () {
-                    saveInProgress = false;
-                };
-
-                var saveUpdates = function () {
-                    saveInProgress = true;
-                    saveFunction().finally(saveFinished);
-
-                };
-
-                var saveFunction = function (){
-                    // studentService.
-                };
-
-                var debounceSaveUpdates = function (newVal, oldVal) {
-                    if (newVal != oldVal) {
-                        if (timeout) {
-                            $timeout.cancel(timeout);
-                        }
-                        timeout = $timeout(saveUpdates, 1000);
-                    }
-
-                };
-
+    
                 vm.showAdvanced = function(ev) {
-                $mdDialog.show({
+                var dialog = $mdDialog.show({
                   controller: "fcDialogController",
                   controllerAs: "fcDialogVM",
                   templateUrl: 'app/components/flashcards/dialog/fcDialog.html',
                   parent: angular.element(document.body),
-                  // locals: {
-                  //       semester: semester
-                  // },
+                  locals: {
+                         quizId: vm.quizId
+                   },
                   targetEvent: ev,
                   clickOutsideToClose:true,
                   fullscreen: vm.customFullscreen // Only for -xs, -sm breakpoints.
+                }).then(function () {
+                    studentService.getFlashcards(vm.quizId).then(function (data) {
+                        vm.flashcards = data.data;
+                    })
                 })
               };
 
-                $scope.$watch('subjectsVM.quizName', debounceSaveUpdates);
 
             }]);
 

@@ -6,7 +6,6 @@ var Schema = mongoose.Schema;
 var flashcard = new Schema({
     question: String,
     answer: String,
-    flashcardId: String,
     quizId: String
 })
 // define student model
