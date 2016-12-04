@@ -23,6 +23,7 @@
                 //    })
                 //};
                 //vm.quiz = vm.quiz.quizName;
+                //$rootScope.quizName = vm.quiz.quizName;
                 vm.createQuiz = function () {
                     console.log(vm.quiz.quizName);
                     studentService.postQuiz(vm.quiz);

@@ -17,25 +17,26 @@
                     $state.go('root.quiz');
                 }
 
-    
+                vm.quizName = $rootScope.quizName;
+
                 vm.showAdvanced = function(ev) {
-                var dialog = $mdDialog.show({
-                  controller: "fcDialogController",
-                  controllerAs: "fcDialogVM",
-                  templateUrl: 'app/components/flashcards/dialog/fcDialog.html',
-                  parent: angular.element(document.body),
-                  locals: {
-                         quizId: vm.quizId
-                   },
-                  targetEvent: ev,
-                  clickOutsideToClose:true,
-                  fullscreen: vm.customFullscreen // Only for -xs, -sm breakpoints.
-                }).then(function () {
-                    studentService.getFlashcards(vm.quizId).then(function (data) {
-                        vm.flashcards = data.data;
-                    })
-                })
-              };
+                  var dialog = $mdDialog.show({
+                    controller: "fcDialogController",
+                    controllerAs: "fcDialogVM",
+                    templateUrl: 'app/components/flashcards/dialog/fcDialog.html',
+                    parent: angular.element(document.body),
+                    locals: {
+                           quizId: vm.quizId
+                     },
+                    targetEvent: ev,
+                    clickOutsideToClose:true,
+                    fullscreen: vm.customFullscreen // Only for -xs, -sm breakpoints.
+                  }).then(function () {
+                      studentService.getFlashcards(vm.quizId).then(function (data) {
+                          vm.flashcards = data.data;
+                      })
+                  })
+                };
 
 
             }]);

@@ -1,9 +1,9 @@
 (function(){
 	angular.module('FlashCards')
-		.controller('fcDialogController', ['$mdDialog', 'quizId', 'studentService', function($mdDialog,studentService){
+		.controller('fcDialogController', ['$mdDialog', '$rootScope', 'quizId', 'studentService', function($mdDialog, $rootScope, dstudentService){
 		    var vm = this;
-            
-			vm.flashcard = {question:"", quizId:quizId, answer:""};
+            vm.quizName = $rootScope.quizName;
+			vm.flashcard = {question:"", quizName:vm.quizName, answer:""};
 
 
 			vm.flag = 0;
