@@ -59,10 +59,11 @@
 			//			console.log(err);
 			//		})
 
-			//};
+			//};    
 
-			var getQuizzes = function(studentId) {//
-			    return $http.get('http://localhost:27017/api/quizzes/' + studentId).then(function (data) {
+			var getQuizzes = function (studentId) {//
+			    //console.log("getQuizzes");
+			    return $http.get('http://localhost:27017/api/list/quizzes/' + studentId).then(function (data) {
 						return data;
 					}).catch(function(err){
 						console.log(err);

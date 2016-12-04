@@ -70,17 +70,16 @@ module.exports = function(app) {
 	//});
 
 
-	app.post('/api/quizzes', function(req,res) {//
+	app.post('/api/quizzes', function (req, res) {//
+	    console.log(req.body.quizName);
 		Quizzes.find({ 
 		    subjectId: req.body.subjectId,
 		    quizName: req.body.quizName,
-		    quizId: req.body.quizId,
 		},function(err,data) {
 			if (data.length != 0){}
 			else {
 				Quizzes.create({
 				    quizName: req.body.quizName,
-				    quizId: req.body.quizId,
 				    studentId: req.body.studentId
 				},function(err,data) {
 				if (err)
@@ -340,7 +339,8 @@ module.exports = function(app) {
     //});
 
     //get all courses with the semesterID
-    app.get('/api/quizzes/:studentId',function(req,res){//
+    app.get('/api/list/quizzes/:studentId', function (req, res) {//
+        //console.log("get quizzes");
         Quizzes.find({
             studentId: req.params.studentId
         },function(err,quizzes) {

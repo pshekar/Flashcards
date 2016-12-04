@@ -35,6 +35,30 @@
 						</md-card-content>
 					</md-card>
 				</div>
+                <div ng-repeat="flashcard in flashcardsVM.flashcards">
+                    <div layout="row" layout-align="center center">
+                        <md-card style="height:200px" flex="40">
+                            <md-card-content>
+                                <b>
+                                    <strong>
+                                        <font size="5">{{flashcard.question}}</font>
+                                    </strong>
+                                </b>
+                            </md-card-content>
+                        </md-card>
+                        <span flex="5"></span>
+                        <md-card style="height:200px" flex="40">
+                            <md-card-content>
+                                <b>
+                                    <mark>
+                                        <font size="5">Answers</font>
+                                    </mark>
+                                </b>
+                            </md-card-content>
+                        </md-card>
+                    </div>
+                </div>
+
 			</md-card-content>
 		</md-card>
 	</div>

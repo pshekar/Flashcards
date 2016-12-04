@@ -4,6 +4,13 @@
             function ($mdDialog, studentService, UserService, $cookies, $state, $rootScope, $timeout, $scope) {
 
                 var vm = this;
+                vm.quizzes = [];
+                vm.studentId = $cookies.get('studentId');
+
+                studentService.getQuizzes(vm.studentId).then(function (data) {
+                    console.log(data.data);
+                    vm.quizzes = data.data;
+                })
 
                 vm.makeQuiz = function() {
                     // console.log('hi');
@@ -14,33 +21,6 @@
                     $state.go('root.flashcards');
                 }
 
-                var timeout = null;
-                var saveInProgress = false;
-                var saveFinished = function () {
-                    saveInProgress = false;
-                };
-
-                var saveUpdates = function () {
-                    saveInProgress = true;
-                    saveFunction().finally(saveFinished);
-
-                };
-
-                var saveFunction = function (){
-                    // studentService.
-                };
-
-                var debounceSaveUpdates = function (newVal, oldVal) {
-                    if (newVal != oldVal) {
-                        if (timeout) {
-                            $timeout.cancel(timeout);
-                        }
-                        timeout = $timeout(saveUpdates, 1000);
-                    }
-
-                };
-
-                $scope.$watch('quizVM.quizName', debounceSaveUpdates);
 
             }]);
 
