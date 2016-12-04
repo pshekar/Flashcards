@@ -1,15 +1,10 @@
 (function(){
 	angular.module('FlashCards')
-		.controller('fcDialogController', ['$mdDialog', 'quizName', 'studentId', 'studentService', function($mdDialog, quizName, studentId, studentService){
+		.controller('fcDialogController', ['$mdDialog', 'quizId', 'studentService', function($mdDialog, quizId, studentService){
 		    var vm = this;
 
-		    vm.flashcard = { question: "", answer: "", quizId: ""};
-		    vm.quiz = { quizName: quizName, studentId: studentId };
+		    vm.flashcard = { question: "", answer: "", quizId: quizId};
 
-		    studentService.getSingleQuiz(vm.quiz).then(function (data) {
-		        console.log(data.data._id);
-		        vm.flashcard.quizId = data.data._id;
-		    });
 
 
 		    console.log(vm.flashcard);

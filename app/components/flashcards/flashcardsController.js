@@ -5,9 +5,15 @@
 
                 var vm = this;
                 vm.flashcards = [];
-                vm.quizId = $cookies.get('quizId');
+                vm.quizName = $cookies.get('quizId');
                 vm.studentId = $cookies.get('studentId');
 
+                vm.quiz = { quizName: vm.quizName, studentId: vm.studentId };
+
+                studentService.getSingleQuiz(vm.quiz).then(function (data) {
+                    console.log(data.data);
+                    vm.quizId = data.data._id;
+                });
 
                 vm.makeQuiz = function() {
                     console.log('hi');
@@ -26,9 +32,7 @@
                   templateUrl: 'app/components/flashcards/dialog/fcDialog.html',
                   parent: angular.element(document.body),
                   locals: {
-                      quizName: vm.quizId,
-                      studentId: vm.studentId
-
+                      quizId: vm.quizId
                    },
                   targetEvent: ev,
                   clickOutsideToClose:true,

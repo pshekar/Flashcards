@@ -300,7 +300,7 @@ module.exports = function(app) {
 	app.get('/api/flashcards/:quizId', function(req,res) {//
 		// use mongoose to get sections with course ID
 		Flashcards.find({
-		    quizId: req.params.quizId,
+		    _id: req.params.quizId,
 		},function(err, quizzes) {
 			if (err) // Error handling
 				res.send(err);
