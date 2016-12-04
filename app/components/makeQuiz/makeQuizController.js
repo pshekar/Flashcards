@@ -5,6 +5,9 @@
 
                 var vm = this;
 
+                vm.studentId = $cookies.get('studentId');
+                vm.quiz = { quizName: "", quizId: "", studentId: studentId };
+
                 //vm.openDialog = function(event) {
                 //    var dialog = $mdDialog.show({
                 //        targetEvent:event,
