@@ -6,13 +6,14 @@
                 var vm = this;
                 vm.flashcards = [];
                 vm.quizName = $cookies.get('quizId');
+                console.log(vm.quizName);
                 vm.studentId = $cookies.get('studentId');
 
                 vm.quiz = { quizName: vm.quizName, studentId: vm.studentId };
 
                 
                 studentService.getSingleQuiz(vm.quiz).then(function (data) {
-                    console.log(data.data);
+                    //console.log(data.data);
                     vm.quizId = data.data._id;
                 }).then(function () {
                     studentService.getFlashcard(vm.quizId).then(function (data) {
@@ -25,7 +26,7 @@
 
 
                 vm.makeQuiz = function() {
-                    console.log('hi');
+                    //console.log('hi');
                     $state.go('root.makeQuiz');
                 }
 

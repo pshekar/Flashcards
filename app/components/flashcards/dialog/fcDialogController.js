@@ -6,6 +6,9 @@
 		    vm.flashcard = { question: "", answer: "", quizId: quizId};
 
 
+		    vm.cancel = function() {
+		    	$mdDialog.hide();
+		    }
 
 		    console.log(vm.flashcard);
 			vm.flag = 0;
