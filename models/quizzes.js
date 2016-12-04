@@ -5,7 +5,6 @@ var Schema = mongoose.Schema;
 
 var quizzes = new Schema({
     quizName: String,
-    quizId: String,
     studentId: String
 })
 // define student model

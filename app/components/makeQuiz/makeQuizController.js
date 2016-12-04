@@ -6,7 +6,7 @@
                 var vm = this;
 
                 vm.studentId = $cookies.get('studentId');
-                vm.quiz = { quizName: "", quizId: "", studentId: studentId };
+                vm.quiz = { quizName: "", studentId: vm.studentId };
 
                 //vm.openDialog = function(event) {
                 //    var dialog = $mdDialog.show({
@@ -30,7 +30,7 @@
                             console.log("create quiz " + response);
                             if (response == null) {
                                 $scope.error = "postQuiz";
-                                console.log("error" + $scope.error);
+                                console.log("error " + $scope.error);
                             }
                             else if (response.status == 200) {
                                 //change to edit quiz

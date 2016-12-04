@@ -70,15 +70,14 @@ module.exports = function(app) {
 	//});
 
 
-	app.post('/api/quizzes ', function(req,res) {//
-		console.log(res.body);
-		//Quizzes.find({ 
-		//    subjectId: req.body.subjectId,
-		//    quizName: req.body.quizName,
-		//    quizId: req.body.quizId,
-		//},function(err,data) {
-		//	if (data.length != 0){}
-		//	else {
+	app.post('/api/quizzes', function(req,res) {//
+		Quizzes.find({ 
+		    subjectId: req.body.subjectId,
+		    quizName: req.body.quizName,
+		    quizId: req.body.quizId,
+		},function(err,data) {
+			if (data.length != 0){}
+			else {
 				Quizzes.create({
 				    quizName: req.body.quizName,
 				    quizId: req.body.quizId,
@@ -87,8 +86,8 @@ module.exports = function(app) {
 				if (err)
 					res.send(err);
 				})
-			//}
-		//})
+			}
+		})
 	})
 
 	//app.post('/api/subjects', function(req, res) {//
