@@ -10,10 +10,19 @@
 
                 vm.quiz = { quizName: vm.quizName, studentId: vm.studentId };
 
+                
                 studentService.getSingleQuiz(vm.quiz).then(function (data) {
                     console.log(data.data);
                     vm.quizId = data.data._id;
+                }).then(function () {
+                    studentService.getFlashcard(vm.quizId).then(function (data) {
+                        vm.flashcards = data.data;
+                        console.log(vm.flashcards);
+                    });
                 });
+
+                
+
 
                 vm.makeQuiz = function() {
                     console.log('hi');
@@ -40,6 +49,7 @@
                 }).then(function () {
                     studentService.getFlashcard(vm.quizId).then(function (data) {
                         vm.flashcards = data.data;
+                        console.log(vm.flashcards);
                     })
                 })
               };

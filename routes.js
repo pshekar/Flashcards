@@ -148,6 +148,21 @@ module.exports = function(app) {
 		})
 	});
 
+	app.get('/api/flashcards/:quizId', function (req, res) {//
+	    // use mongoose to get sections with course ID
+	    //var mongoose = require('mongoose');
+	    //var id = mongoose.Types.ObjectId(req.params.quizId);
+	    console.log("get flashcards");
+	    console.log(req.params.quizId);
+	    Flashcards.find({
+	        quizId: req.params.quizId,
+	    }, function (err, quizzes) {
+	        if (err) // Error handling
+	            res.send(err);
+	        res.json(quizzes); // return all students in JSON
+	    });
+	});
+
 	app.get('/api/quizzes/:quizName/:studentId', function (req, res) {
 	    console.log("get quiz");
 	    console.log(req.body.quizName);
@@ -297,16 +312,7 @@ module.exports = function(app) {
 	//	});
 	//});
 
-	app.get('/api/flashcards/:quizId', function(req,res) {//
-		// use mongoose to get sections with course ID
-		Flashcards.find({
-		    _id: req.params.quizId,
-		},function(err, quizzes) {
-			if (err) // Error handling
-				res.send(err);
-			res.json(quizzes); // return all students in JSON
-		});
-	});
+
 
     // server routes
     // handle api calls

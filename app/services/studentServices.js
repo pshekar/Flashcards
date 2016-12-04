@@ -96,6 +96,7 @@
 
 			var getFlashcard = function(quizId) {//
 			    return $http.get('http://localhost:27017/api/flashcards/' + quizId).then(function (data) {
+			        console.log(data);
 						return data;
 					}).catch(function(err){
 						console.log(err);
@@ -178,13 +179,13 @@
 				    getQuizzes: getQuizzes,
 				    getQuiz: getQuiz,
 				    postFlashcards: postFlashcards,
+				    getSingleQuiz: getSingleQuiz,
 				    getFlashcard: getFlashcard,
 				    deleteFlashcards: deleteFlashcards,
 				    updateFlashcards: updateFlashcards,
 				    deleteFlashCard: deleteFlashCard,
 				    updateQuiz: updateQuiz,
-				    deleteQuiz: deleteQuiz,
-                    getSingleQuiz: getSingleQuiz
+				    deleteQuiz: deleteQuiz
 				};
 		}])
 })()
