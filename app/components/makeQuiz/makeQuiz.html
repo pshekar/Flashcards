@@ -1,16 +1,16 @@
 ﻿<md-content flex md-scroll-y layout-fill layout-padding>
 	<div layout="row" ng-submit="makeQuiz.createQuiz()" layout-align="center center">
-		<md-card flex-gt-md="90" flex-gt-md="40" layout-padding>
+		<md-card flex-gt-md="30" flex-gt-md="40" layout-padding>
 			<md-card-content>
-				<h1>Make Quiz</h1>
+				<font size="7">Make Quiz</font>
 				<md-divider></md-divider>
-				<span flex></span>
-                <form name="quiz" role="form">
+                <span></span>
+                <p></p>
+                <form name="quiz" ng-submit="makeQuizVM.createQuiz()" role="form">
                     <div layout="row">
-                        <span flex="5"></span>
-                        <h2 flex="50">Quiz Name:</h2>
-                        <md-input-container flex="50">
-                            <input placeholder="Quiz Name" required ng-model="makeQuizVM.quiz.quizName" />
+                        <h2 flex="25">Quiz Name:</h2>
+                        <md-input-container flex>
+                            <input type="text" placeholder="Quiz Name" required ng-model="makeQuizVM.quiz.quizName" />
                         </md-input-container>
                     </div>
 
@@ -28,12 +28,15 @@
             </md-input-container>
         </div>-->
                     <!--Need submit button for new quiz-->
+                    <div layout="row">
+                        <span flex></span>
+                        <md-button ng-click="makeQuizVM.createQuiz()" class="md-button ng-scope md-primary md-raised" layout-align="end end">
 
-                    <button ng-click="makeQuizVM.createQuiz()" class="md-button ng-scope md-primary md-raised" layout-align="end end" type="submit">
-
-                        <!--<ng-md-icon  icon="add" size="24" style="fill: white"></ng-md-icon>-->
-                        Submit
-                    </button>
+                            <!--<ng-md-icon  icon="add" size="24" style="fill: white"></ng-md-icon>-->
+                            Submit
+                        </md-button>
+                        <span flex></span>
+                    </div>
                 </form>
 			</md-card-content>
 		</md-card>

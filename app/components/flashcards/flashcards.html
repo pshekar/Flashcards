@@ -1,10 +1,41 @@
-﻿<div layout="row">
-	Subject Name
-	<span flex></span>
-	<md-button ng-click="flashcardsVM.goToQuiz()" class="md-button md-raised"> Test Me! </md-button>
-	<span flex></span>
-	<button ng-click="flashcardsVM.showAdvanced($event)" class="md-button ng-scope md-primary md-raised" layout-align="end end" type="submit">
-    	<ng-md-icon  icon="add" size="24" style="fill: white"></ng-md-icon>
-        Add a Flashcard
-    </button>
-</div>
+﻿<md-content flex md-scroll-y layout-fill layout-padding>
+	<div layout="row" layout-align="center center">
+       	<md-card flex-gt-sm="90" flex-gt-md="80" layout-padding>		
+			<md-card-content>
+				<div layout="row">
+					<h2>{{Subject Name}</h2>
+					<span flex></span>
+					<md-button ng-click="flashcardsVM.goToQuiz()" class="md-button md-raised"> Test Me! </md-button>
+					<span flex></span>
+					<button ng-click="flashcardsVM.showAdvanced($event)" class="md-button ng-scope md-primary md-raised" layout-align="end end" type="submit">
+				    	<ng-md-icon  icon="add" size="24" style="fill: white"></ng-md-icon>
+				        Add a Flashcard
+				    </button>
+				</div>
+				<p></p>
+				<md-divider></md-divider>
+				<div layout="row" layout-align="center center">
+					<md-card style="height:200px" flex="40">
+						<md-card-content>
+							<b>
+								<strong>
+									<font size="5">Questions</font>
+								</strong>
+						</b>
+						</md-card-content>
+					</md-card>
+					<span flex="5"></span>
+					<md-card style="height:200px" flex="40">
+						<md-card-content>
+							<b>
+								<mark>
+									<font size="5">Answers</font>
+								</mark>
+							</b>
+						</md-card-content>
+					</md-card>
+				</div>
+			</md-card-content>
+		</md-card>
+	</div>
+</md-content>
