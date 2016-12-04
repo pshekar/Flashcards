@@ -5,8 +5,10 @@
 
                 var vm = this;
                 vm.flashcards = [];
+                vm.questions = [];
+                vm.answers = [];
+                vm.index = 0;
                 vm.quizName = $cookies.get('quizId');
-                console.log(vm.quizName);
                 vm.studentId = $cookies.get('studentId');
 
                 vm.quiz = { quizName: vm.quizName, studentId: vm.studentId };
@@ -19,11 +21,17 @@
                     studentService.getFlashcard(vm.quizId).then(function (data) {
                         vm.flashcards = data.data;
                         console.log(vm.flashcards);
+                        vm.getData(vm.flashcards);
                     });
                 });
 
-                
-
+                vm.getData = function(flashcards) {
+                  for (var i = 0; i < flashcards.length; i++) {
+                    vm.questions[vm.index] = flashcards[vm.index].question;
+                    vm.answers[vm.index] = flashcards[vm.index].answer;
+                    vm.index++;
+                  }
+                }
 
                 vm.makeQuiz = function() {
                     //console.log('hi');
