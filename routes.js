@@ -138,7 +138,7 @@ module.exports = function(app) {
 
 	//get individual course
 	app.get('/api/quizzes/:quizId', function(req,res){//
-		Courses.find({
+		Quizzes.find({
 			_id: req.params.quizId
 		},function(err,quiz){
 			if (err) 
@@ -146,6 +146,20 @@ module.exports = function(app) {
 			
 			res.json(quiz);
 		})
+	});
+
+	app.get('/api/quizzes/:quizName/:studentId', function (req, res) {
+	    console.log("get quiz");
+	    console.log(req.body.quizName);
+	    console.log(req.params.quizName);
+	    Quizzes.findOne({
+	        quizName: req.params.quizName,
+	        studentId: req.params.studentId
+	    }, function (err, quiz) {
+	        if (err)
+	            res.send(err);
+	        res.json(quiz);
+	    })
 	});
 
 	app.post('/api/students', function(req, res) {//
@@ -162,10 +176,12 @@ module.exports = function(app) {
 
 
 	app.post('/api/flashcards', function(req, res) {//
-		Flashcards.find({
+	    console.log(req.body.quizId);
+	    console.log(req.body.answer);
+	    console.log(req.body);
+	    Flashcards.find({
 			question: req.body.question,
 			answer: req.body.answer,
-			flashcardId: req.body.flashcardId,
             quizId: req.body.quizId
 		},function(err,data) {
 			if(data.length != 0) {}

@@ -6,6 +6,7 @@
                 var vm = this;
                 vm.flashcards = [];
                 vm.quizId = $cookies.get('quizId');
+                vm.studentId = $cookies.get('studentId');
 
 
                 vm.makeQuiz = function() {
@@ -25,13 +26,15 @@
                   templateUrl: 'app/components/flashcards/dialog/fcDialog.html',
                   parent: angular.element(document.body),
                   locals: {
-                         quizId: vm.quizId
+                      quizName: vm.quizId,
+                      studentId: vm.studentId
+
                    },
                   targetEvent: ev,
                   clickOutsideToClose:true,
                   fullscreen: vm.customFullscreen // Only for -xs, -sm breakpoints.
                 }).then(function () {
-                    studentService.getFlashcards(vm.quizId).then(function (data) {
+                    studentService.getFlashcard(vm.quizId).then(function (data) {
                         vm.flashcards = data.data;
                     })
                 })

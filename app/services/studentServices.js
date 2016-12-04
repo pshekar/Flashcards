@@ -78,6 +78,14 @@
 					})
 			}
 
+			var getSingleQuiz = function (quizObj) {
+			    return $http.get('http://localhost:27017/api/quizzes/' + quizObj.quizName + '/' + quizObj.studentId).then(function (data) {
+			        return data;
+			    }).catch(function (err) {
+			        console.log(err);
+			    })
+			}
+
 			var postFlashcards = function(flashcardObj) {//
 			    return $http.post('http://localhost:27017/api/flashcards', flashcardObj).then(function (err, data) {
 						return data;
@@ -175,7 +183,8 @@
 				    updateFlashcards: updateFlashcards,
 				    deleteFlashCard: deleteFlashCard,
 				    updateQuiz: updateQuiz,
-				    deleteQuiz: deleteQuiz
+				    deleteQuiz: deleteQuiz,
+                    getSingleQuiz: getSingleQuiz
 				};
 		}])
 })()
