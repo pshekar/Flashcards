@@ -8,7 +8,7 @@
 			}
 
 			vm.add = function() {
-
+				console.log('hi');
 			}
 		}])
 

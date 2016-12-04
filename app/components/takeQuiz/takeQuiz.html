@@ -1,6 +1,30 @@
-﻿<div class="specialBoxes" layout="column" style="width:100%">
-	<div class="cardPadding" layout="row" layout-wrap>
-		<md-card style="width: 600px;height:200px">
+﻿<div layout="row" layout-align="center end">
+	<h2>My Quizzes</h2>
+</div>
+<div class="specialBoxes" layout="column" style="width:100%">
+	<div layout="row" layout-wrap>
+		<span flex="5"></span>
+		<md-card flex="30" style="height:200px">
+			<md-card-header style="height:100%">
+				<md-card-header-text layout-wrap>
+					<md-button ng-click="takeQuizVM.makeQuiz()" class="quiz-btn" style="height:100%">
+                        Make Your Own!
+                    </md-button>
+				</md-card-header-text>
+			</md-card-header>
+		</md-card>
+	</div>
+	<p></p>
+	<div class="cardPadding">
+		<p></p>
+		<md-divider></md-divider>
+	</div>
+	<div layout="row" layout-align="center end">
+		<h2>Take a Random Quiz!</h2>
+	</div>
+	<div layout="row" layout-wrap>
+		<span flex="5"></span>		
+		<md-card flex="30" style="height:200px">
 			<md-card-header style="height:100%">
 				<md-card-header-text layout-wrap>
 					<md-button ng-click="takeQuizVM.goToQuiz()" class="quiz-btn" style="height:100%">
@@ -9,7 +33,7 @@
 				</md-card-header-text>
 			</md-card-header>
 		</md-card>
-		<md-card style="width: 600px; height:200px">
+		<md-card flex="30">
 			<md-card-header style="height:100%">
 				<md-card-header-text layout-wrap>
 					<md-button ng-click="takeQuizVM.goToQuiz()" class="quiz-btn" style="height:100%">
@@ -18,7 +42,7 @@
 				</md-card-header-text>
 			</md-card-header>
 		</md-card>
-		<md-card style="width: 600px; height:200px">
+		<md-card flex="30">
 			<md-card-header style="height:100%">
 				<md-card-header-text layout-wrap>
 					<md-button ng-click="takeQuizVM.goToQuiz()" class="quiz-btn" style="height:100%">
@@ -28,8 +52,9 @@
 			</md-card-header>
 		</md-card>
 	</div>
-	<div class="cardPadding" layout="row" layout-wrap>
-		<md-card style="width: 600px; height:200px">
+	<div layout="row" layout-wrap>
+		<span flex="5"></span>
+		<md-card flex="30" style="height:200px">
 			<md-card-header style="height:100%">
 				<md-card-header-text layout-wrap>
 					<md-button ng-click="takeQuizVM.goToQuiz()" class="quiz-btn" style="height:100%">
@@ -38,7 +63,7 @@
 				</md-card-header-text>
 			</md-card-header>
 		</md-card>
-		<md-card style="width: 600px; height:200px">
+		<md-card flex="30" style="height:200px">
 			<md-card-header style="height:100%">
 				<md-card-header-text layout-wrap>
 					<md-button ng-click="takeQuizVM.goToQuiz()" class="quiz-btn" style="height:100%">
@@ -46,15 +71,6 @@
                     </md-button>
 				</md-card-header-text>
 			</md-card-header>
-		</md-card>
-		<md-card style="width: 600px; height:200px">
-			<md-card-header style="height:100%">
-				<md-card-header-text layout-wrap>
-					<md-button ng-click="takeQuizVM.makeQuiz()" class="quiz-btn" style="height:100%">
-                        Make Your Own!
-                    </md-button>
-				</md-card-header-text>
-			</md-card-header>
-		</md-card>		
+		</md-card>	
 	</div>
 </div>

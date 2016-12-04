@@ -19,7 +19,7 @@
                 //        //do stuff not sure what
                 //    })
                 //};
-
+                //vm.quiz = vm.quiz.quizName;
                 vm.createQuiz = function () {
                     console.log(vm.quiz.quizName);
                     studentService.postQuiz(vm.quiz)
@@ -31,7 +31,7 @@
                             }
                             else if (response.status == 200) {
                                 //change to edit quiz
-                                $state.go('root.home');
+                                $state.go('root.flashcards');
                             }
                         });
                 };
