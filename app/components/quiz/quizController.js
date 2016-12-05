@@ -10,6 +10,8 @@
                 vm.answers = [];
                 vm.correct = 0;
                 vm.right = [];
+                vm.enteredAnswers = [];
+                vm.inputAnswers = [];
                 vm.quizName = $cookies.get('quizId');
                 vm.studentId = $cookies.get('studentId');
 
@@ -33,11 +35,9 @@
                     vm.questions[i] = flashcards[i].question;
                     vm.answers[i] = flashcards[i].answer;
                   }
-                  // vm.getAnswers(flashcards);
                 };
 
                 vm.getAnswers = function(flashcards) {
-                    vm.enteredAnswers = [];
                     for (var i = 0; i < vm.flashcards.length; i++) {
                         vm.enteredAnswers[i] = vm.inputAnswers[i];
                         if (vm.enteredAnswers[i] != vm.answers[i]) {
@@ -81,8 +81,8 @@
                     }
 
                 };
-                console.log(vm.right);
                 vm.showAdvanced = function(ev) {
+                    vm.getAnswers(vm.flashcards);
                     var dialog = $mdDialog.show({
                       controller: "quizDialogController",
                       controllerAs: "quizDialogVM",
