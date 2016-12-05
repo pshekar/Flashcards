@@ -10,8 +10,7 @@
 
     <md-dialog-content>
       <div layout="row" layout-align="center center">
-        <h2>You Scored:</h2>
-        <h2>{{points gotten} / {{total points}
+        <h2>You Scored: {{quizDialogVM.numCorrect}} / {{quizDialogVM.totalPoints}} </h2>
       </div>
       <div layout="row" ng-if="quizDialogVM.showGood" layout-align="center center">
         <h3>Good Job!</h3>

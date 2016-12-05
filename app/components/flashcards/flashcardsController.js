@@ -9,10 +9,10 @@
                 vm.answers = [];
                 vm.index = 0;
                 vm.quizName = $cookies.get('quizId');
+                console.log(vm.quizName);
                 vm.studentId = $cookies.get('studentId');
 
                 vm.quiz = { quizName: vm.quizName, studentId: vm.studentId };
-
                 
                 studentService.getSingleQuiz(vm.quiz).then(function (data) {
                     // console.log(data.data);
