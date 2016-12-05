@@ -17,7 +17,8 @@
                     $state.go('root.makeQuiz');
                 }
 
-                vm.goToQuiz = function() {
+                vm.goToQuiz = function (quiz) {
+                    $cookies.put('quizId', quiz.quizName);
                     $state.go('root.flashcards');
                 }
 
