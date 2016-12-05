@@ -1,8 +1,8 @@
 (function(){
 	angular.module('FlashCards')
-		.controller('quizDialogController', ['$mdDialog', '$state', 'quizId', 'studentService', function($mdDialog, $state, quizId, studentService){
+		.controller('quizDialogController', ['$mdDialog', '$state', 'quizId', 'right', 'studentService', function($mdDialog, $state, quizId, right, studentService){
 		    var vm = this;
-
+		    console.log(right);
 
 		    vm.reload = function() {
 		    	$mdDialog.hide();

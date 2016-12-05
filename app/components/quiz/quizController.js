@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('FlashCards')
-		.controller('quizController', ['$mdDialog', 'studentService', 'UserService', '$cookies', '$state', '$rootScope', '$timeout', '$scope',
+        .controller('quizController', ['$mdDialog', 'studentService', 'UserService', '$cookies', '$state', '$rootScope', '$timeout', '$scope',
             function ($mdDialog, studentService, UserService, $cookies, $state, $rootScope, $timeout, $scope) {
 
                 var vm = this;
@@ -8,7 +8,8 @@
                 vm.flashcards = [];
                 vm.questions = [];
                 vm.answers = [];
-                vm.index = 0;
+                vm.correct = 0;
+                vm.right = [];
                 vm.quizName = $cookies.get('quizId');
                 vm.studentId = $cookies.get('studentId');
 
@@ -29,16 +30,15 @@
 
                 vm.getData = function(flashcards) {
                   for (var i = 0; i < flashcards.length; i++) {
-                    vm.questions[vm.index] = flashcards[vm.index].question;
-                    vm.answers[vm.index] = flashcards[vm.index].answer;
-                    vm.index++;
+                    vm.questions[i] = flashcards[i].question;
+                    vm.answers[i] = flashcards[i].answer;
                   }
+                  // vm.getAnswers(flashcards);
                 };
 
                 vm.getAnswers = function(flashcards) {
                     vm.enteredAnswers = [];
-                    vm.right = [];
-                    for (var i = 0; i < flashcards.length; i++) {
+                    for (var i = 0; i < vm.flashcards.length; i++) {
                         vm.enteredAnswers[i] = vm.inputAnswers[i];
                         if (vm.enteredAnswers[i] != vm.answers[i]) {
                             vm.right[i] = false;
@@ -48,6 +48,12 @@
                         }
                     }
                     console.log(vm.right);
+                    vm.totalQuestions = vm.flashcards.length;
+                    for (var i = 0; i < vm.flashcards.length; i++) {
+                        if (vm.right[i] == true) {
+                            vm.correct++;
+                        }
+                    }
                 }
 
                 var timeout = null;
@@ -75,7 +81,7 @@
                     }
 
                 };
-
+                console.log(vm.right);
                 vm.showAdvanced = function(ev) {
                     var dialog = $mdDialog.show({
                       controller: "quizDialogController",
@@ -83,7 +89,8 @@
                       templateUrl: 'app/components/quiz/dialog/quizDialog.html',
                       parent: angular.element(document.body),
                       locals: {
-                          quizId: vm.quizId
+                          quizId: vm.quizId,
+                          right: vm.right
                        },
                       targetEvent: ev,
                       clickOutsideToClose:false,
