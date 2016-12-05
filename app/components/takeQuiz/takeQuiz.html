@@ -31,6 +31,38 @@
 			</md-item>
 		</md-list>
 	</div>
+
+
+    <div ng-repeat="quiz in takeQuizVM.quizzes">
+
+        <div class="row" ng-if="$even">
+
+                    <md-card flex="30" style="height:200px">
+                        <md-card-header style="height:100%">
+                            <md-card-header-text layout-wrap>
+                                <md-button ng-click="takeQuizVM.goToQuiz(quiz)" class="quiz-btn" style="height:100%">
+                                    {{takeQuizVM.quizzes[$index].quizName}}
+                                </md-button>
+                            </md-card-header-text>
+                        </md-card-header>
+                    </md-card>
+
+
+                    <md-card flex="30" style="height:200px">
+                        <md-card-header style="height:100%">
+                            <md-card-header-text layout-wrap>
+                                <md-button ng-click="takeQuizVM.goToQuiz(quiz)" class="quiz-btn" style="height:100%">
+                                    {{takeQuizVM.quizzes[$index + 1].quizName}}
+                                </md-button>
+                            </md-card-header-text>
+                        </md-card-header>
+                    </md-card>
+
+        </div>
+
+    </div>
+
+
 	<p></p>
 	<div class="cardPadding">
 		<p></p>

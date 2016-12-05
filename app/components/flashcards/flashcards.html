@@ -13,41 +13,99 @@
 				    </button>
 				</div>
 				<p></p>
+                <div layout="row" layout-align="center center">
+                    <span flex="25"></span>
+                    <h2>
+                        Questions:
+                    </h2>
+                    <span flex="35"></span>
+                    <h2>
+                        Answers:
+                    </h2>
+                    <span flex></span>
+                </div>
 				<md-divider></md-divider>
-				<md-list>
-					<md-item ng-repeat="flashcard in flashcardsVM.flashcards">
-						<md-item-content>
-							<md-menu-item style="height:300px">
-								<div layout="column">
-									<div layout="row" layout-align="center center">
-										<md-card style="height:200px" flex="40">
-											<md-card-content>
-												<b>
-													<strong>
-														<font size="5">{{flashcard.question}}</font>
-													</strong>
-											</b>
-											</md-card-content>
-										</md-card>
-										<span flex="5"></span>
-										<md-card style="height:200px" flex="40">
-											<md-card-content>
-												<b>
-													<mark>
-														<font size="5">{{flashcard.answer}}</font>
-													</mark>
-												</b>
-											</md-card-content>
-										</md-card>
-									</div>
-									<div layout="row">	
-										<p></p>
-									</div>
-								</div>
-							</md-menu-item>
-						</md-item-content>
-					</md-item>
-				</md-list>
+                
+                <md-list>
+                    <md-item ng-repeat="flashcard in flashcardsVM.flashcards" ng-if="!flashcard.showInput">
+                        <md-item-content>
+                            <md-menu-item style="height:300px">
+                                <div layout="column">
+                                    <div layout="row" layout-align="center center" layout-wrap>
+                                        <md-menu>
+                                            <md-button class="md-icon-button course" ng-click="$mdOpenMenu($event)" aria-label="more options button">
+                                                <md-icon md-svg-src="assets/img/icons/ellipsis.svg" size="30"></md-icon>
+                                            </md-button>
+                                            <md-menu-content>
+                                                <md-menu-item>
+                                                    <md-button ng-click="flashcardsVM.editFlashcard(flashcard)" aria-label="edit button">
+                                                        Edit
+                                                    </md-button>
+                                                </md-menu-item>
+                                                <md-menu-item>
+                                                    <md-button aria-label="delete button" ng-click="flashcardsVM.deleteFlashcard(flashcard._id)">
+                                                        Delete
+                                                    </md-button>
+                                                </md-menu-item>
+                                            </md-menu-content>
+                                        </md-menu>
+                                        <span flex="5"></span>
+                                        <md-card style="height:200px" flex="40">
+                                            <md-card-content>
+                                                <b>
+                                                    <strong>
+                                                        <font size="5">{{flashcard.question}}</font>
+                                                    </strong>
+                                                </b>
+                                            </md-card-content>
+                                        </md-card>
+                                        <span flex="5"></span>
+                                        <md-card style="height:200px" flex="40">
+                                            <md-card-content>
+                                                <b>
+                                                    <mark>
+                                                        <font size="5">{{flashcard.answer}}</font>
+                                                    </mark>
+                                                </b>
+                                            </md-card-content>
+                                        </md-card>
+                                    </div>
+                                    <div layout="row">
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </md-menu-item>
+                        </md-item-content>
+                    </md-item>
+                </md-list>
+                    <form name="gradeEditForm">
+                        <div layout="row" ng-repeat="flashcard in flashcardsVM.flashcards" ng-if="flashcard.showInput" layout-align="center center">
+                            <span flex="5"></span>
+                            <md-card style="height:200px" flex="40">
+                                <md-card-content>
+                                    <md-input-container>
+                                        <input type="text" required ng-model="flashcard.question" placeholder="Answer" />
+                                    </md-input-container>
+                                </md-card-content>
+                            </md-card>
+                            <span flex="5"></span>
+                            <md-card style="height:200px" flex="40">
+                                <md-card-content>
+                                    <md-input-container>
+                                        <input type="text" required ng-model="flashcard.answer" placeholder="Answer" />
+                                    </md-input-container>
+                                </md-card-content>
+                            </md-card>
+                            <md-button style="margin-top: 8px" aria-label="addFlash" class="md-icon-button" ng-click="flashcardsVM.submitEdit(flashcard)">
+                                <ng-md-icon icon="done" size="30"></ng-md-icon>
+                            </md-button>
+                            <md-button style="margin-top: 8px" aria-label="closeInput" class="md-icon-button" ng-click="flashcard.showInput = false">
+                                <ng-md-icon icon="close" size="30"></ng-md-icon>
+                            </md-button> 
+
+                        </div>
+                    </form>
+
 			</md-card-content>
 		</md-card>
 	</div>

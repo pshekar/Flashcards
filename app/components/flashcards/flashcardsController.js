@@ -61,10 +61,50 @@
                         console.log(vm.flashcards);
                     })
                 })
-              };
+                };
+
+                vm.editFlashcard = function (flashcard) {
+                    flashcard.showInput = true;
+                    flashcard.answer = flashcard.answer;
+                    flashcard.question = flashcard.question;
+                }
+
+                vm.submitEdit = function (flashcard) {
+                    studentService.updateFlashcards(flashcard).then(function () {
+                        $timeout(function () {
+                            studentService.getFlashcard(vm.quizId).then(function (data) {
+                                vm.flashcards = data.data;
+                                //console.log(vm.section.length);
+                                for (var i = 0; i < vm.flashcards.length; i++) {
+                                    vm.flashcards[i].showInput = false;
+                                }
+                            })
+                        }, 500)
+                    });
+                    flashcard.showInput = false;
+                    $timeout(function () {
+                        $state.reload('root');
+
+                    }, 500);
+
+                }
 
 
+                vm.deleteFlashcard = function (flashcardId) {
+                    //console.log(gradeId);
+                    studentService.deleteFlashCard(flashcardId).then(function (data) {
+                        studentService.getFlashcard(vm.quizId).then(function (data) {
+                            vm.flashcards = data.data;
+                            //console.log(vm.section.length);
+                            for (var i = 0; i < vm.flashcards.length; i++) {
+                                vm.flashcards[i].showInput = false;
+                            }
+                        })
+                    })
+                }
             }]);
+
+
 
 
 })()
