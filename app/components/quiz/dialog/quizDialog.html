@@ -1,0 +1,38 @@
+<md-dialog style="width:700px">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Results</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+
+
+    <md-dialog-content>
+      <div layout="row" layout-align="center center">
+        <h2>You Scored:</h2>
+        <h2>{{points gotten} / {{total points}
+      </div>
+      <div layout="row" ng-if="quizDialogVM.showGood" layout-align="center center">
+        <h3>Good Job!</h3>
+      </div>
+      <div layout="row" ng-if="quizDialogVM.showBad" layout-align="center center">
+        <h3>Better luck next time!</h3>
+      </div>
+      <md-divider></md-divider>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="quizDialogVM.goHome()">
+        Go Home
+      </md-button>
+      <span flex></span>
+      <md-button ng-click="quizDialogVM.reload()">
+        Try Again
+      </md-button>
+      <span flex></span>
+      <md-button ng-click="quizDialogVM.goToQuiz()">
+        Go to Quizzes
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

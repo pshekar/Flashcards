@@ -15,7 +15,7 @@
 
                 
                 studentService.getSingleQuiz(vm.quiz).then(function (data) {
-                    //console.log(data.data);
+                    // console.log(data.data);
                     vm.quizId = data.data._id;
                 }).then(function () {
                     studentService.getFlashcard(vm.quizId).then(function (data) {
@@ -31,16 +31,16 @@
                     vm.answers[vm.index] = flashcards[vm.index].answer;
                     vm.index++;
                   }
-                }
+                };
 
                 vm.makeQuiz = function() {
                     //console.log('hi');
                     $state.go('root.makeQuiz');
-                }
+                };
 
                 vm.goToQuiz = function() {
                     $state.go('root.quiz');
-                }
+                };
 
     
                 vm.showAdvanced = function(ev) {
