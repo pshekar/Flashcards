@@ -12,6 +12,13 @@
                     vm.quizzes = data.data;
                 })
 
+                vm.loadedQuizzes = [];
+                vm.loadedQuizzes[0] = {quizName:'Science', studentId: vm.studentId}
+                vm.loadedQuizzes[1] = {quizName:'Math', studentId: vm.studentId}
+                vm.loadedQuizzes[2] = {quizName:'History', studentId: vm.studentId}
+                vm.loadedQuizzes[3] = {quizName:'Geography', studentId: vm.studentId}
+                vm.loadedQuizzes[4] = {quizName:'General', studentId: vm.studentId}
+
                 vm.makeQuiz = function() {
                     // console.log('hi');
                     $state.go('root.makeQuiz');

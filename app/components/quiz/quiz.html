@@ -27,12 +27,28 @@
                         </md-card-content>
                       </md-card>
                       <span flex="5"></span>
-                      <md-card style="height:200px" flex="40">
+                      <md-card style="height:200px" flex="40" ng-if="!quizVM.flipped">
                         <md-card-content>
                           <md-input-container>
                             <input type="text" required ng-model="quizVM.inputAnswers[$index]" placeholder="Answer"/>
                           </md-input-container>
                         </md-card-content>
+                        <md-card-footer layout="row">
+                          <span flex></span>
+                          <md-button ng-click="quizVM.flipped = !quizVM.flipped">Show Answer</md-button>
+                        </md-card-footer>
+                      </md-card>
+
+                      <md-card style="height:200px" flex="40" ng-if="quizVM.flipped">
+                        <md-card-content>
+                          <md-input-container>
+                            <input type="text" required ng-model="quizVM.answers[$index]" placeholder="Answer"/>
+                          </md-input-container>
+                        </md-card-content>
+                        <md-card-footer layout="row">
+                          <span flex></span>
+                          <md-button ng-click="quizVM.flipped = !quizVM.flipped">Hide Answer</md-button>
+                        </md-card-footer>
                       </md-card>
                     </div>
                     <div layout="row">  

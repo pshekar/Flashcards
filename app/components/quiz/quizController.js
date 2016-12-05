@@ -14,6 +14,7 @@
                 vm.inputAnswers = [];
                 vm.quizName = $cookies.get('quizId');
                 vm.studentId = $cookies.get('studentId');
+                vm.flipped = false;
 
 
                 vm.quiz = { quizName: vm.quizName, studentId: vm.studentId };
